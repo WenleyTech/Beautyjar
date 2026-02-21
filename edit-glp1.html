@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GLP-1 & Medical Weight Management – The Edit – BeautyJar</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --white:#ffffff; --cream:#f5f5f5; --charcoal:#1a1a18; --mid:#4a4a45; --muted:#999999; --border:#e4e4e4; --green:#1e2822; }
+    body { font-family: 'Jost', sans-serif; background: var(--white); color: var(--charcoal); font-weight: 300; -webkit-font-smoothing: antialiased; }
+
+    .top-bar { display:flex; align-items:center; justify-content:space-between; padding:14px 40px; background:var(--white); border-bottom:1px solid var(--border); position:sticky; top:0; z-index:100; }
+    .logo-link { font-family:'Cormorant Garamond',serif; font-weight:700; font-size:20px; letter-spacing:.2em; text-transform:uppercase; color:var(--charcoal); text-decoration:none; }
+    .top-bar-actions { display:flex; align-items:center; gap:18px; }
+    .link-plain { font-size:13px; color:var(--charcoal); text-decoration:none; transition:opacity .2s; }
+    .link-plain:hover { opacity:.6; }
+    .btn-dark { background:var(--green); color:white; font-family:'Jost',sans-serif; font-size:13px; font-weight:500; letter-spacing:.06em; padding:9px 18px; border:none; text-decoration:none; display:inline-block; transition:opacity .2s; }
+    .btn-dark:hover { opacity:.82; }
+
+    /* HERO */
+    .article-hero { border-bottom:1px solid var(--border); }
+    .hero-image { width:100%; height:360px; overflow:hidden; }
+    .hero-image div, .hero-image img { width:100%; height:100%; object-fit:cover; display:block; }
+    .hero-meta { max-width:740px; margin:0 auto; padding:48px 24px 0; }
+    .back-link { display:inline-flex; align-items:center; gap:6px; font-size:12px; color:var(--muted); text-decoration:none; letter-spacing:.04em; margin-bottom:24px; transition:color .2s; }
+    .back-link:hover { color:var(--charcoal); }
+    .back-link svg { width:13px; height:13px; stroke:currentColor; fill:none; stroke-width:2; }
+    .article-category { font-size:10px; letter-spacing:.24em; text-transform:uppercase; color:var(--muted); margin-bottom:12px; }
+    .article-title { font-family:'Cormorant Garamond',serif; font-size:clamp(32px,5vw,52px); font-weight:600; line-height:1.1; margin-bottom:20px; }
+    .article-dek { font-size:17px; color:var(--mid); line-height:1.75; font-style:italic; font-family:'Cormorant Garamond',serif; padding-bottom:36px; border-bottom:1px solid var(--border); }
+
+    /* BODY */
+    .article-body { max-width:740px; margin:0 auto; padding:48px 24px 80px; }
+    .article-body h2 { font-family:'Cormorant Garamond',serif; font-size:28px; font-weight:600; margin:44px 0 16px; line-height:1.2; }
+    .article-body p { font-size:15.5px; line-height:1.85; color:var(--mid); margin-bottom:22px; }
+    .article-body strong { color:var(--charcoal); font-weight:500; }
+    .article-body ul { margin:0 0 22px 20px; }
+    .article-body ul li { font-size:15px; line-height:1.8; color:var(--mid); margin-bottom:8px; }
+
+    /* PULL QUOTE */
+    .pull-quote { border-left:3px solid var(--charcoal); padding:4px 0 4px 24px; margin:40px 0; }
+    .pull-quote p { font-family:'Cormorant Garamond',serif; font-size:22px; font-style:italic; color:var(--charcoal); line-height:1.5; margin:0; }
+
+    /* PROVIDER CTA */
+    .provider-cta { background:var(--charcoal); padding:52px 48px; margin:56px 0 0; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:24px; }
+    .cta-text p.cta-label { font-size:10px; letter-spacing:.24em; text-transform:uppercase; color:rgba(255,255,255,.5); margin-bottom:10px; }
+    .cta-text h3 { font-family:'Cormorant Garamond',serif; font-size:28px; font-weight:600; color:white; line-height:1.2; margin-bottom:10px; }
+    .cta-text p.cta-sub { font-size:13.5px; color:rgba(255,255,255,.65); line-height:1.7; max-width:380px; }
+    .btn-white { display:inline-flex; align-items:center; gap:8px; background:white; color:var(--charcoal); font-family:'Jost',sans-serif; font-size:12px; font-weight:500; letter-spacing:.1em; text-transform:uppercase; padding:14px 28px; text-decoration:none; white-space:nowrap; transition:opacity .2s; }
+    .btn-white:hover { opacity:.88; }
+    .btn-white svg { width:12px; height:12px; stroke:currentColor; fill:none; stroke-width:2.5; }
+
+    /* MORE ARTICLES */
+    .more-articles { border-top:1px solid var(--border); padding:56px 40px; }
+    .more-label { font-size:10px; letter-spacing:.24em; text-transform:uppercase; color:var(--muted); margin-bottom:28px; }
+    .more-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:20px; }
+    .more-card { text-decoration:none; color:inherit; border:1px solid var(--border); display:block; transition:box-shadow .2s; }
+    .more-card:hover { box-shadow:0 4px 16px rgba(0,0,0,.06); }
+    .more-image { aspect-ratio:3/2; overflow:hidden; }
+    .more-image div { width:100%; height:100%; }
+    .more-body { padding:16px 18px 20px; }
+    .more-cat { font-size:9.5px; letter-spacing:.2em; text-transform:uppercase; color:var(--muted); margin-bottom:8px; }
+    .more-title { font-family:'Cormorant Garamond',serif; font-size:19px; font-weight:600; line-height:1.25; }
+
+    @keyframes fadeUp { from{opacity:0;transform:translateY(12px)} to{opacity:1;transform:translateY(0)} }
+    .hero-meta { animation:fadeUp .5s ease both; }
+    .article-body { animation:fadeUp .5s .08s ease both; }
+  </style>
+</head>
+<body>
+
+  <header class="top-bar">
+    <a href="index.html" class="logo-link">BeautyJar</a>
+    <nav class="top-bar-actions">
+      <a href="the-edit.html" class="link-plain">The Edit</a>
+      <a href="providers.html" class="link-plain">Find Providers</a>
+      <a href="get-featured.html" class="btn-dark">Get Featured</a>
+    </nav>
+  </header>
+
+  <article>
+    <div class="article-hero">
+      <div class="hero-image">
+        <!-- Replace with: <img src="images/glp1.jpg" alt="GLP-1 Weight Management" /> -->
+        <div style="background:linear-gradient(160deg,#d4cdc4,#a89888);"></div>
+      </div>
+      <div class="hero-meta">
+        <a href="the-edit.html" class="back-link"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>The Edit</a>
+        <p class="article-category">GLP-1 &amp; Medical Weight Management</p>
+        <h1 class="article-title">What You Should Actually Know Before Starting GLP-1 Therapy</h1>
+        <p class="article-dek">Semaglutide and tirzepatide have changed the conversation around weight management — but not every provider offering them has the same level of training, oversight, or follow-up care. Here's what to look for.</p>
+      </div>
+    </div>
+
+    <div class="article-body">
+      <p>GLP-1 receptor agonists — the class of medications that includes semaglutide (Ozempic, Wegovy) and tirzepatide (Mounjaro, Zepbound) — are among the most significant developments in medicine in a generation. For millions of women, they have offered a path to meaningful, sustained weight loss that diet and exercise alone could not deliver. But the speed at which they've entered mainstream culture has outpaced the availability of qualified, attentive providers.</p>
+
+      <p>Understanding what GLP-1 therapy actually involves — and what good care looks like — is the first step to finding a provider you can trust.</p>
+
+      <h2>How GLP-1 Medications Work</h2>
+      <p>GLP-1 (glucagon-like peptide-1) is a hormone naturally produced in the gut after eating. It signals the pancreas to release insulin, slows gastric emptying, and communicates satiety to the brain. GLP-1 receptor agonists mimic this hormone — reducing appetite, improving blood sugar regulation, and in clinical trials, producing average weight loss of 15–22% of body weight depending on the medication and dosage.</p>
+
+      <p>Unlike previous weight loss medications, GLP-1 drugs address the physiological drivers of hunger rather than simply suppressing it through stimulants. This is a meaningful distinction — and one reason outcomes have been more durable.</p>
+
+      <h2>What Good GLP-1 Care Looks Like</h2>
+      <p>The medication itself is only part of the picture. Well-managed GLP-1 therapy includes a thorough initial assessment — medical history, metabolic labs, cardiovascular risk factors, and a clear understanding of your goals. It also involves:</p>
+      <ul>
+        <li>Gradual dose titration to minimize side effects</li>
+        <li>Regular follow-up appointments — not just prescription refills</li>
+        <li>Nutritional guidance to support lean muscle preservation during weight loss</li>
+        <li>Monitoring for contraindications and long-term safety considerations</li>
+        <li>A clear plan for what happens if you stop the medication</li>
+      </ul>
+
+      <div class="pull-quote">
+        <p>"The medication opens a window. What you do with that window — how you build sustainable habits, how you address the underlying metabolic picture — is where the provider's role becomes essential."</p>
+      </div>
+
+      <h2>The Rise of Compounded GLP-1s</h2>
+      <p>During periods of shortage, compounding pharmacies began producing versions of semaglutide and tirzepatide at lower price points. The FDA has since clarified its position on compounded GLP-1s as brand availability improves — but the market remains active and varied in quality.</p>
+      <p>If a provider is offering compounded GLP-1 therapy, the questions to ask are: which compounding pharmacy do they use, how is it dosed, and what monitoring is included? The answer tells you a great deal about the standard of care you can expect.</p>
+
+      <h2>Red Flags to Watch For</h2>
+      <p>The growth of telehealth GLP-1 prescribing has made medication more accessible — but it has also created a category of providers whose involvement begins and ends with writing a prescription. Be cautious of:</p>
+      <ul>
+        <li>Providers who don't require labs before prescribing</li>
+        <li>No follow-up protocol or check-in schedule</li>
+        <li>No discussion of side effects, contraindications, or exit strategy</li>
+        <li>Unusually low pricing with no explanation of what's included</li>
+      </ul>
+
+      <h2>Finding the Right Provider</h2>
+      <p>GLP-1 therapy is increasingly offered by primary care physicians, internists, endocrinologists, OB-GYNs, and nurse practitioners with appropriate training. What matters more than credential type is the quality of the relationship and the comprehensiveness of the care. A provider who takes time to understand your full health picture — not just your weight goal — is worth finding.</p>
+
+      <p>BeautyJar verifies GLP-1 providers for license, identity, and practice so you can begin your search with confidence.</p>
+
+      <!-- PROVIDER CTA -->
+      <div class="provider-cta">
+        <div class="cta-text">
+          <p class="cta-label">For Providers</p>
+          <h3>Are You a GLP-1 Provider?</h3>
+          <p class="cta-sub">Join the BeautyJar verified network and connect with women actively seeking qualified GLP-1 care. Free to apply.</p>
+        </div>
+        <a href="get-featured.html" class="btn-white">Apply to Get Featured <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+      </div>
+    </div>
+  </article>
+
+  <!-- MORE ARTICLES -->
+  <div class="more-articles">
+    <p class="more-label">More from The Edit</p>
+    <div class="more-grid">
+      <a class="more-card" href="edit-hormone.html">
+        <div class="more-image"><div style="background:linear-gradient(160deg,#ddd5cc,#b8a89c);"></div></div>
+        <div class="more-body"><p class="more-cat">Hormone Therapy</p><p class="more-title">HRT in 2025: What's Changed and What Hasn't</p></div>
+      </a>
+      <a class="more-card" href="edit-metabolic.html">
+        <div class="more-image"><div style="background:linear-gradient(160deg,#c8c0b8,#9e9088);"></div></div>
+        <div class="more-body"><p class="more-cat">Metabolic Health</p><p class="more-title">Why Metabolic Health Is the Foundation of Everything Else</p></div>
+      </a>
+      <a class="more-card" href="edit-aesthetics.html">
+        <div class="more-image"><div style="background:linear-gradient(160deg,#d8d2cc,#b0a8a0);"></div></div>
+        <div class="more-body"><p class="more-cat">Skin &amp; Aesthetics</p><p class="more-title">The Aesthetic Treatment Landscape Is Moving Fast</p></div>
+      </a>
+    </div>
+  </div>
+
+</body>
+</html>
