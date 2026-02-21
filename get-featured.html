@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Get Featured – BeautyJar Verified Network</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream:      #f9f7f4;
+      --warm-white: #fdfcfa;
+      --charcoal:   #1a1a18;
+      --mid:        #4a4a45;
+      --muted:      #8a8a82;
+      --border:     #e0ddd8;
+      --btn-bg:     #1e2822;
+      --btn-text:   #f9f7f4;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Jost', sans-serif;
+      background: var(--warm-white);
+      color: var(--charcoal);
+      font-weight: 300;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── TOP BAR ── */
+    .top-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 24px;
+      background: var(--warm-white);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .logo-link {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 700;
+      font-size: 22px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--charcoal);
+      text-decoration: none;
+    }
+
+    .back-link {
+      font-size: 12px;
+      letter-spacing: .08em;
+      color: var(--mid);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: color .2s;
+    }
+    .back-link:hover { color: var(--charcoal); }
+    .back-link svg { width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 2; }
+
+    /* ── HERO SPLIT ── */
+    .page-hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 100vh;
+    }
+
+    @media (max-width: 720px) {
+      .page-hero { grid-template-columns: 1fr; }
+      .hero-left-photo { min-height: 280px; order: -1; }
+    }
+
+    /* LEFT – editorial photo panel */
+    .hero-left-photo {
+      position: relative;
+      overflow: hidden;
+      background-image: url('https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&w=800&q=80');
+      background-size: cover;
+      background-position: center;
+    }
+
+    .hero-left-photo::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(26,26,24,.12) 0%, rgba(26,26,24,.45) 100%);
+    }
+
+    .photo-caption {
+      position: absolute;
+      bottom: 32px;
+      left: 28px;
+      right: 28px;
+      z-index: 2;
+      color: white;
+    }
+
+    .photo-caption-eyebrow {
+      font-size: 10px;
+      letter-spacing: .24em;
+      text-transform: uppercase;
+      opacity: .7;
+      margin-bottom: 8px;
+    }
+
+    .photo-caption-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(22px, 3vw, 32px);
+      font-weight: 600;
+      line-height: 1.25;
+    }
+
+    /* verification mini badges in photo */
+    .photo-badges {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-top: 16px;
+    }
+
+    .photo-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255,255,255,.15);
+      backdrop-filter: blur(6px);
+      border: 1px solid rgba(255,255,255,.25);
+      padding: 6px 12px;
+      font-size: 11px;
+      letter-spacing: .06em;
+      color: white;
+      width: fit-content;
+    }
+
+    .photo-badge svg {
+      width: 12px; height: 12px;
+      stroke: white; fill: none; stroke-width: 2.5;
+    }
+
+    /* RIGHT – form panel */
+    .hero-right {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      padding: 52px 40px 52px;
+      background: var(--warm-white);
+      overflow-y: auto;
+    }
+
+    @media (max-width: 480px) {
+      .hero-right { padding: 32px 20px; }
+    }
+
+    .form-eyebrow {
+      font-size: 10.5px;
+      letter-spacing: .24em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+
+    .form-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(30px, 4vw, 42px);
+      font-weight: 600;
+      line-height: 1.15;
+      color: var(--charcoal);
+      margin-bottom: 12px;
+    }
+
+    .form-subtitle {
+      font-size: 13.5px;
+      line-height: 1.7;
+      color: var(--mid);
+      font-weight: 300;
+      margin-bottom: 32px;
+      max-width: 360px;
+    }
+
+    /* ── PERKS LIST ── */
+    .perks {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 36px;
+      padding-bottom: 36px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .perk {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .perk-icon {
+      width: 32px; height: 32px;
+      border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .perk-icon svg { width: 14px; height: 14px; stroke: var(--charcoal); fill: none; stroke-width: 2; }
+
+    .perk-body h4 {
+      font-size: 13.5px;
+      font-weight: 500;
+      letter-spacing: .02em;
+      margin-bottom: 2px;
+    }
+    .perk-body p {
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    /* ── TYPEFORM EMBED SECTION ── */
+    .typeform-wrap {
+      width: 100%;
+    }
+
+    .typeform-label {
+      font-size: 11px;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .typeform-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* Typeform embedded iframe */
+    .typeform-iframe-wrap {
+      border: 1px solid var(--border);
+      overflow: hidden;
+      background: #fff;
+      min-height: 560px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .typeform-iframe-wrap iframe {
+      width: 100%;
+      height: 560px;
+      border: none;
+      display: block;
+    }
+
+    /* Placeholder shown until form ID is added */
+    .typeform-placeholder {
+      text-align: center;
+      padding: 48px 32px;
+      width: 100%;
+    }
+
+    .placeholder-icon {
+      width: 48px; height: 48px;
+      border: 1.5px solid var(--border);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 16px;
+    }
+    .placeholder-icon svg { width: 20px; height: 20px; stroke: var(--muted); fill: none; stroke-width: 1.5; }
+
+    .placeholder-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .placeholder-text {
+      font-size: 12.5px;
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+
+    .placeholder-code {
+      background: var(--cream);
+      border: 1px solid var(--border);
+      padding: 12px 16px;
+      font-family: 'Courier New', monospace;
+      font-size: 11.5px;
+      color: var(--mid);
+      text-align: left;
+      margin-bottom: 20px;
+      line-height: 1.8;
+    }
+
+    .placeholder-code span { color: #c4602c; }
+
+    .btn-typeform {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--btn-bg);
+      color: var(--btn-text);
+      font-family: 'Jost', sans-serif;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      padding: 12px 24px;
+      text-decoration: none;
+      transition: opacity .2s;
+    }
+    .btn-typeform:hover { opacity: .82; }
+    .btn-typeform svg { width: 13px; height: 13px; stroke: currentColor; fill: none; stroke-width: 2; }
+
+    /* ── TRUST STRIP ── */
+    .trust-strip {
+      background: var(--cream);
+      border-top: 1px solid var(--border);
+      padding: 24px;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 8px 32px;
+    }
+
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 12px;
+      letter-spacing: .04em;
+      color: var(--mid);
+    }
+    .trust-item svg { width: 14px; height: 14px; stroke: var(--mid); fill: none; stroke-width: 2; }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(14px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .form-eyebrow  { animation: fadeUp .6s ease both; }
+    .form-title    { animation: fadeUp .6s .08s ease both; }
+    .form-subtitle { animation: fadeUp .6s .16s ease both; }
+    .perks         { animation: fadeUp .6s .24s ease both; }
+    .typeform-wrap { animation: fadeUp .6s .32s ease both; }
+  </style>
+</head>
+<body>
+
+  <!-- TOP BAR -->
+  <header class="top-bar">
+    <a href="index.html" class="logo-link">BeautyJar</a>
+    <a href="index.html" class="back-link">
+      <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+      Back to Home
+    </a>
+  </header>
+
+  <!-- MAIN SPLIT LAYOUT -->
+  <main class="page-hero">
+
+    <!-- LEFT: editorial photo + trust signals -->
+    <div class="hero-left-photo">
+      <div class="photo-caption">
+        <p class="photo-caption-eyebrow">Join the Network</p>
+        <h2 class="photo-caption-text">Be Where Women Come to Find Trusted Care</h2>
+        <div class="photo-badges">
+          <div class="photo-badge">
+            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            License Verified by BeautyJar
+          </div>
+          <div class="photo-badge">
+            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            Identity Confirmed
+          </div>
+          <div class="photo-badge">
+            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            Practice Profile Verified
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT: form panel -->
+    <div class="hero-right">
+
+      <p class="form-eyebrow">Provider Application</p>
+      <h1 class="form-title">Get Featured on BeautyJar</h1>
+      <p class="form-subtitle">Apply for your Verified Badge and join a curated network women trust for GLP-1, hormone therapy, aesthetics, and wellness care.</p>
+
+      <!-- PERKS -->
+      <div class="perks">
+        <div class="perk">
+          <div class="perk-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <div class="perk-body">
+            <h4>Verified Badge</h4>
+            <p>Your profile carries BeautyJar's verification mark, building immediate trust with new patients.</p>
+          </div>
+        </div>
+        <div class="perk">
+          <div class="perk-icon">
+            <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="22" y2="22"/></svg>
+          </div>
+          <div class="perk-body">
+            <h4>Discovery & Search Visibility</h4>
+            <p>Appear in search results when women look for your specialty, service, or city.</p>
+          </div>
+        </div>
+        <div class="perk">
+          <div class="perk-icon">
+            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+          </div>
+          <div class="perk-body">
+            <h4>Professional Profile Page</h4>
+            <p>A clean, editorial-quality profile showcasing your services, credentials, and story.</p>
+          </div>
+        </div>
+        <div class="perk">
+          <div class="perk-icon">
+            <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <div class="perk-body">
+            <h4>Provider Spotlight Features</h4>
+            <p>Top verified providers are featured in our curated editorial and homepage spotlights.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- TYPEFORM EMBED -->
+      <div class="typeform-wrap">
+        <p class="typeform-label">Application Form</p>
+
+        <div class="typeform-iframe-wrap">
+
+          <!--
+            ══════════════════════════════════════════
+            HOW TO CONNECT YOUR TYPEFORM:
+            ══════════════════════════════════════════
+            1. Go to typeform.com and create your form
+            2. Publish it and click Share → Embed
+            3. Copy your form ID (the part after typeform.com/to/)
+            4. Replace YOUR_FORM_ID below with your actual ID
+            5. Uncomment the iframe and delete the placeholder div
+            ══════════════════════════════════════════
+
+            <iframe
+              src="https://beautyjar.typeform.com/to/YOUR_FORM_ID"
+              title="BeautyJar Provider Application"
+              allow="camera; microphone; autoplay; encrypted-media;"
+            ></iframe>
+          -->
+
+          <!-- PLACEHOLDER — remove this once your form is live -->
+          <div class="typeform-placeholder">
+            <div class="placeholder-icon">
+              <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+            </div>
+            <p class="placeholder-title">Your Typeform Goes Here</p>
+            <p class="placeholder-text">Create your provider application form on Typeform, then paste your form ID into the code below. The form will appear here automatically.</p>
+            <div class="placeholder-code">
+              &lt;iframe<br>
+              &nbsp;&nbsp;src="https://beautyjar.typeform.com/to/<span>YOUR_FORM_ID</span>"<br>
+              &gt;&lt;/iframe&gt;
+            </div>
+            <a href="https://www.typeform.com" target="_blank" rel="noopener" class="btn-typeform">
+              Create Your Form on Typeform
+              <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+          </div>
+
+        </div><!-- /typeform-iframe-wrap -->
+      </div><!-- /typeform-wrap -->
+
+    </div><!-- /hero-right -->
+  </main>
+
+  <!-- TRUST STRIP -->
+  <div class="trust-strip">
+    <div class="trust-item">
+      <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+      Secure application
+    </div>
+    <div class="trust-item">
+      <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+      Manual review by our team
+    </div>
+    <div class="trust-item">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      Response within 48 hours
+    </div>
+    <div class="trust-item">
+      <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+      Free to apply
+    </div>
+  </div>
+
+</body>
+</html>
