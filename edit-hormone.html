@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hormone Therapy – The Edit – BeautyJar</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --white:#ffffff; --cream:#f5f5f5; --charcoal:#1a1a18; --mid:#4a4a45; --muted:#999999; --border:#e4e4e4; --green:#1e2822; }
+    body { font-family: 'Jost', sans-serif; background: var(--white); color: var(--charcoal); font-weight: 300; -webkit-font-smoothing: antialiased; }
+    .top-bar { display:flex; align-items:center; justify-content:space-between; padding:14px 40px; background:var(--white); border-bottom:1px solid var(--border); position:sticky; top:0; z-index:100; }
+    .logo-link { font-family:'Cormorant Garamond',serif; font-weight:700; font-size:20px; letter-spacing:.2em; text-transform:uppercase; color:var(--charcoal); text-decoration:none; }
+    .top-bar-actions { display:flex; align-items:center; gap:18px; }
+    .link-plain { font-size:13px; color:var(--charcoal); text-decoration:none; transition:opacity .2s; }
+    .link-plain:hover { opacity:.6; }
+    .btn-dark { background:var(--green); color:white; font-family:'Jost',sans-serif; font-size:13px; font-weight:500; letter-spacing:.06em; padding:9px 18px; border:none; text-decoration:none; display:inline-block; transition:opacity .2s; }
+    .btn-dark:hover { opacity:.82; }
+    .article-hero { border-bottom:1px solid var(--border); }
+    .hero-image { width:100%; height:360px; overflow:hidden; }
+    .hero-image div, .hero-image img { width:100%; height:100%; object-fit:cover; display:block; }
+    .hero-meta { max-width:740px; margin:0 auto; padding:48px 24px 0; }
+    .back-link { display:inline-flex; align-items:center; gap:6px; font-size:12px; color:var(--muted); text-decoration:none; margin-bottom:24px; transition:color .2s; }
+    .back-link:hover { color:var(--charcoal); }
+    .back-link svg { width:13px; height:13px; stroke:currentColor; fill:none; stroke-width:2; }
+    .article-category { font-size:10px; letter-spacing:.24em; text-transform:uppercase; color:var(--muted); margin-bottom:12px; }
+    .article-title { font-family:'Cormorant Garamond',serif; font-size:clamp(32px,5vw,52px); font-weight:600; line-height:1.1; margin-bottom:20px; }
+    .article-dek { font-size:17px; color:var(--mid); line-height:1.75; font-style:italic; font-family:'Cormorant Garamond',serif; padding-bottom:36px; border-bottom:1px solid var(--border); }
+    .article-body { max-width:740px; margin:0 auto; padding:48px 24px 80px; }
+    .article-body h2 { font-family:'Cormorant Garamond',serif; font-size:28px; font-weight:600; margin:44px 0 16px; line-height:1.2; }
+    .article-body p { font-size:15.5px; line-height:1.85; color:var(--mid); margin-bottom:22px; }
+    .article-body strong { color:var(--charcoal); font-weight:500; }
+    .article-body ul { margin:0 0 22px 20px; }
+    .article-body ul li { font-size:15px; line-height:1.8; color:var(--mid); margin-bottom:8px; }
+    .pull-quote { border-left:3px solid var(--charcoal); padding:4px 0 4px 24px; margin:40px 0; }
+    .pull-quote p { font-family:'Cormorant Garamond',serif; font-size:22px; font-style:italic; color:var(--charcoal); line-height:1.5; margin:0; }
+    .provider-cta { background:var(--charcoal); padding:52px 48px; margin:56px 0 0; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:24px; }
+    .cta-text p.cta-label { font-size:10px; letter-spacing:.24em; text-transform:uppercase; color:rgba(255,255,255,.5); margin-bottom:10px; }
+    .cta-text h3 { font-family:'Cormorant Garamond',serif; font-size:28px; font-weight:600; color:white; line-height:1.2; margin-bottom:10px; }
+    .cta-text p.cta-sub { font-size:13.5px; color:rgba(255,255,255,.65); line-height:1.7; max-width:380px; }
+    .btn-white { display:inline-flex; align-items:center; gap:8px; background:white; color:var(--charcoal); font-family:'Jost',sans-serif; font-size:12px; font-weight:500; letter-spacing:.1em; text-transform:uppercase; padding:14px 28px; text-decoration:none; white-space:nowrap; transition:opacity .2s; }
+    .btn-white:hover { opacity:.88; }
+    .btn-white svg { width:12px; height:12px; stroke:currentColor; fill:none; stroke-width:2.5; }
+    .more-articles { border-top:1px solid var(--border); padding:56px 40px; }
+    .more-label { font-size:10px; letter-spacing:.24em; text-transform:uppercase; color:var(--muted); margin-bottom:28px; }
+    .more-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:20px; }
+    .more-card { text-decoration:none; color:inherit; border:1px solid var(--border); display:block; transition:box-shadow .2s; }
+    .more-card:hover { box-shadow:0 4px 16px rgba(0,0,0,.06); }
+    .more-image { aspect-ratio:3/2; overflow:hidden; }
+    .more-image div { width:100%; height:100%; }
+    .more-body { padding:16px 18px 20px; }
+    .more-cat { font-size:9.5px; letter-spacing:.2em; text-transform:uppercase; color:var(--muted); margin-bottom:8px; }
+    .more-title { font-family:'Cormorant Garamond',serif; font-size:19px; font-weight:600; line-height:1.25; }
+    @keyframes fadeUp { from{opacity:0;transform:translateY(12px)} to{opacity:1;transform:translateY(0)} }
+    .hero-meta { animation:fadeUp .5s ease both; }
+    .article-body { animation:fadeUp .5s .08s ease both; }
+  </style>
+</head>
+<body>
+  <header class="top-bar">
+    <a href="index.html" class="logo-link">BeautyJar</a>
+    <nav class="top-bar-actions">
+      <a href="the-edit.html" class="link-plain">The Edit</a>
+      <a href="providers.html" class="link-plain">Find Providers</a>
+      <a href="get-featured.html" class="btn-dark">Get Featured</a>
+    </nav>
+  </header>
+
+  <article>
+    <div class="article-hero">
+      <div class="hero-image">
+        <!-- Replace with: <img src="images/hormone.jpg" alt="Hormone Therapy" /> -->
+        <div style="background:linear-gradient(160deg,#ddd5cc,#b8a89c);"></div>
+      </div>
+      <div class="hero-meta">
+        <a href="the-edit.html" class="back-link"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>The Edit</a>
+        <p class="article-category">Hormone Therapy</p>
+        <h1 class="article-title">HRT in 2025: What's Changed and What Hasn't</h1>
+        <p class="article-dek">Decades of conflicting research left many women hesitant about hormone replacement therapy. A clearer picture is emerging — and a new generation of providers is taking a more nuanced, individualized approach to hormone care.</p>
+      </div>
+    </div>
+
+    <div class="article-body">
+      <p>For many women, the conversation around hormone replacement therapy has been defined by fear — a fear rooted largely in a 2002 study that linked HRT to increased breast cancer risk and was widely reported without the nuance it required. The fallout was significant: millions of women stopped treatment, and a generation of physicians became reluctant to prescribe it.</p>
+      <p>In the years since, researchers have revisited that data. The picture that has emerged is meaningfully different — and more women and providers are approaching hormone care with fresh eyes.</p>
+
+      <h2>What the Research Actually Shows</h2>
+      <p>The 2002 Women's Health Initiative study involved a specific formulation of hormone therapy in a population of older, postmenopausal women. Subsequent analysis found that the risks it identified were not uniform across all women, all formulations, or all stages of menopause. For women who begin hormone therapy within ten years of menopause onset — what researchers call the "timing hypothesis" — the risk profile looks quite different.</p>
+      <p>More recent studies have reinforced the benefits of appropriately timed, appropriately dosed hormone therapy: reduced risk of osteoporosis, improved cardiovascular markers, better cognitive function, and meaningful relief from symptoms including hot flashes, sleep disruption, vaginal atrophy, and mood changes.</p>
+
+      <div class="pull-quote">
+        <p>"The question is no longer whether HRT is safe. The question is whether it is appropriate for you — and that requires a provider who takes the time to understand your full picture."</p>
+      </div>
+
+      <h2>Bioidentical vs. Synthetic Hormones</h2>
+      <p>One of the most common questions women bring to their providers is about bioidentical hormones — compounds that are structurally identical to the hormones produced by the body. <strong>FDA-approved bioidentical hormones exist</strong> and have strong evidence behind them. Compounded bioidentical hormones, often marketed as more "natural," are a different category — less standardized, less regulated, and with a more limited evidence base.</p>
+      <p>A well-informed provider will walk you through the difference and help you understand what formulation makes sense for your situation.</p>
+
+      <h2>What a Good Hormone Consultation Looks Like</h2>
+      <p>Hormone care should begin with a thorough assessment — not a prescription pad. Expect your provider to:</p>
+      <ul>
+        <li>Review your full symptom picture, not just the most disruptive symptoms</li>
+        <li>Order baseline labs including estrogen, progesterone, testosterone, thyroid, and cortisol where relevant</li>
+        <li>Discuss your personal and family medical history in detail</li>
+        <li>Explain the range of delivery options — oral, transdermal, vaginal — and why one might suit you better than another</li>
+        <li>Set a follow-up schedule to assess response and adjust dosing</li>
+      </ul>
+
+      <h2>Beyond Menopause: Perimenopause and Younger Women</h2>
+      <p>Hormone care isn't only for women in menopause. Perimenopause — the transition that can begin years before the final menstrual period — often involves significant hormonal fluctuation that affects sleep, mood, weight, and cognition. Many women in their late 30s and 40s are navigating this transition without recognizing it for what it is.</p>
+      <p>A provider who understands the full hormonal arc of a woman's life — not just the endpoint of menopause — is worth seeking out.</p>
+
+      <div class="provider-cta">
+        <div class="cta-text">
+          <p class="cta-label">For Providers</p>
+          <h3>Are You a Hormone Therapy Provider?</h3>
+          <p class="cta-sub">Join the BeautyJar verified network. Plans start at $199/month. Apply to get verified and published.</p>
+        </div>
+        <a href="get-featured.html" class="btn-white">Apply to Get Featured <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+      </div>
+    </div>
+  </article>
+
+  <div class="more-articles">
+    <p class="more-label">More from The Edit</p>
+    <div class="more-grid">
+      <a class="more-card" href="edit-glp1.html">
+        <div class="more-image"><div style="background:linear-gradient(160deg,#d4cdc4,#a89888);"></div></div>
+        <div class="more-body"><p class="more-cat">GLP-1</p><p class="more-title">What You Should Actually Know Before Starting GLP-1 Therapy</p></div>
+      </a>
+      <a class="more-card" href="edit-metabolic.html">
+        <div class="more-image"><div style="background:linear-gradient(160deg,#c8c0b8,#9e9088);"></div></div>
+        <div class="more-body"><p class="more-cat">Metabolic Health</p><p class="more-title">Why Metabolic Health Is the Foundation of Everything Else</p></div>
+      </a>
+      <a class="more-card" href="edit-wellness.html">
+        <div class="more-image"><div style="background:linear-gradient(160deg,#ccc6be,#a09890);"></div></div>
+        <div class="more-body"><p class="more-cat">Wellness</p><p class="more-title">IV Therapy, Peptides, and the Rise of Proactive Wellness Care</p></div>
+      </a>
+    </div>
+  </div>
+</body>
+</html>

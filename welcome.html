@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Application Received – BeautyJar</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --white:    #ffffff;
+      --cream:    #f5f5f5;
+      --charcoal: #1a1a18;
+      --mid:      #4a4a45;
+      --muted:    #999999;
+      --border:   #e4e4e4;
+      --green:    #1e2822;
+    }
+
+    body {
+      font-family: 'Jost', sans-serif;
+      background: var(--white);
+      color: var(--charcoal);
+      font-weight: 300;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── TOP BAR ── */
+    .top-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 40px;
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+    }
+    .logo-link {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 700;
+      font-size: 20px;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--charcoal);
+      text-decoration: none;
+    }
+    .back-link {
+      font-size: 12.5px;
+      color: var(--muted);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: color .2s;
+    }
+    .back-link:hover { color: var(--charcoal); }
+    .back-link svg { width: 13px; height: 13px; stroke: currentColor; fill: none; stroke-width: 2; }
+
+    /* ── CONFIRMATION HEADER ── */
+    .confirm-header {
+      text-align: center;
+      padding: 80px 40px 72px;
+      border-bottom: 1px solid var(--border);
+      max-width: 620px;
+      margin: 0 auto;
+    }
+
+    .confirm-icon {
+      width: 52px; height: 52px;
+      border: 1px solid var(--charcoal);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 28px;
+    }
+    .confirm-icon svg { width: 22px; height: 22px; stroke: var(--charcoal); fill: none; stroke-width: 1.8; }
+
+    .confirm-eyebrow {
+      font-size: 10.5px;
+      letter-spacing: .26em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+
+    .confirm-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(36px, 5vw, 52px);
+      font-weight: 600;
+      line-height: 1.1;
+      margin-bottom: 20px;
+    }
+
+    .confirm-sub {
+      font-size: 15px;
+      color: var(--mid);
+      line-height: 1.8;
+    }
+
+    /* ── NEXT STEPS ── */
+    .next-steps {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 64px 40px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .section-eyebrow {
+      font-size: 10px;
+      letter-spacing: .26em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 32px;
+    }
+
+    .steps {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .step {
+      display: flex;
+      align-items: flex-start;
+      gap: 24px;
+      padding: 24px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .step:last-child { border-bottom: none; }
+
+    .step-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--border);
+      line-height: 1;
+      flex-shrink: 0;
+      width: 32px;
+      margin-top: 2px;
+    }
+
+    .step-body h4 {
+      font-size: 15px;
+      font-weight: 500;
+      margin-bottom: 5px;
+    }
+    .step-body p {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    /* ── PRICING SECTION ── */
+    .pricing-section {
+      padding: 72px 40px;
+      background: var(--cream);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .pricing-header {
+      text-align: center;
+      max-width: 520px;
+      margin: 0 auto 56px;
+    }
+
+    .pricing-header .section-eyebrow { text-align: center; }
+
+    .pricing-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(30px, 4vw, 42px);
+      font-weight: 600;
+      line-height: 1.15;
+      margin-bottom: 14px;
+    }
+
+    .pricing-sub {
+      font-size: 14px;
+      color: var(--mid);
+      line-height: 1.75;
+    }
+
+    /* ── TIER GRID ── */
+    .tier-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      max-width: 900px;
+      margin: 0 auto;
+      border: 1px solid var(--border);
+    }
+
+    @media (max-width: 720px) {
+      .tier-grid { grid-template-columns: 1fr; }
+      .tier:not(:last-child) { border-bottom: 1px solid var(--border); border-right: none; }
+    }
+
+    .tier {
+      background: var(--white);
+      padding: 40px 32px;
+      border-right: 1px solid var(--border);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+    }
+    .tier:last-child { border-right: none; }
+
+    /* Premier highlighted */
+    .tier.featured {
+      background: var(--charcoal);
+    }
+
+    .tier-badge {
+      font-size: 9px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      background: var(--charcoal);
+      color: white;
+      padding: 4px 10px;
+      display: inline-block;
+      margin-bottom: 20px;
+      align-self: flex-start;
+    }
+    .tier.featured .tier-badge {
+      background: rgba(255,255,255,.15);
+      color: rgba(255,255,255,.8);
+    }
+
+    .tier-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 28px;
+      font-weight: 600;
+      margin-bottom: 6px;
+      color: var(--charcoal);
+    }
+    .tier.featured .tier-name { color: white; }
+
+    .tier-price {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 44px;
+      font-weight: 700;
+      line-height: 1;
+      color: var(--charcoal);
+      margin-bottom: 4px;
+    }
+    .tier.featured .tier-price { color: white; }
+
+    .tier-period {
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 28px;
+    }
+    .tier.featured .tier-period { color: rgba(255,255,255,.5); }
+
+    .tier-divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin-bottom: 24px;
+    }
+    .tier.featured .tier-divider { border-color: rgba(255,255,255,.15); }
+
+    .tier-features {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 11px;
+      flex: 1;
+      margin-bottom: 32px;
+    }
+
+    .tier-features li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 13px;
+      color: var(--mid);
+      line-height: 1.5;
+    }
+    .tier.featured .tier-features li { color: rgba(255,255,255,.75); }
+
+    .tier-features li svg {
+      width: 12px; height: 12px;
+      stroke: var(--charcoal);
+      fill: none; stroke-width: 2.5;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .tier.featured .tier-features li svg { stroke: rgba(255,255,255,.7); }
+
+    .tier-cta {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      border: 1px solid var(--charcoal);
+      background: transparent;
+      font-family: 'Jost', sans-serif;
+      font-size: 11.5px;
+      font-weight: 500;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--charcoal);
+      padding: 13px 20px;
+      text-decoration: none;
+      transition: background .2s, color .2s;
+      cursor: pointer;
+    }
+    .tier-cta:hover { background: var(--charcoal); color: white; }
+
+    .tier.featured .tier-cta {
+      background: white;
+      border-color: white;
+      color: var(--charcoal);
+    }
+    .tier.featured .tier-cta:hover { background: rgba(255,255,255,.88); }
+
+    .tier-cta svg { width: 11px; height: 11px; stroke: currentColor; fill: none; stroke-width: 2.5; }
+
+    /* ── PRICING NOTE ── */
+    .pricing-note {
+      text-align: center;
+      max-width: 500px;
+      margin: 32px auto 0;
+      font-size: 12.5px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    /* ── CONTACT STRIP ── */
+    .contact-strip {
+      padding: 52px 40px;
+      text-align: center;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .contact-strip p {
+      font-size: 14px;
+      color: var(--mid);
+      margin-bottom: 10px;
+    }
+
+    .contact-strip a {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--charcoal);
+      text-decoration: none;
+      border-bottom: 1px solid var(--charcoal);
+      padding-bottom: 1px;
+      transition: opacity .2s;
+    }
+    .contact-strip a:hover { opacity: .6; }
+
+    /* ── FOOTER ── */
+    .site-footer {
+      padding: 28px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .footer-copy { font-size: 12px; color: var(--muted); }
+    .footer-links { display: flex; gap: 24px; }
+    .footer-links a { font-size: 12px; color: var(--muted); text-decoration: none; transition: color .2s; }
+    .footer-links a:hover { color: var(--charcoal); }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(14px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .confirm-header { animation: fadeUp .5s ease both; }
+    .next-steps     { animation: fadeUp .5s .08s ease both; }
+    .pricing-section{ animation: fadeUp .5s .14s ease both; }
+  </style>
+</head>
+<body>
+
+  <!-- TOP BAR -->
+  <header class="top-bar">
+    <a href="index.html" class="logo-link">BeautyJar</a>
+    <a href="index.html" class="back-link">
+      <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+      Back to Home
+    </a>
+  </header>
+
+  <!-- CONFIRMATION -->
+  <div class="confirm-header">
+    <div class="confirm-icon">
+      <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+    </div>
+    <p class="confirm-eyebrow">Application Received</p>
+    <h1 class="confirm-title">Thank You for Applying</h1>
+    <p class="confirm-sub">Your application has been submitted. Our team reviews every submission individually — you'll hear from us at the email you provided once your review is complete.</p>
+  </div>
+
+  <!-- NEXT STEPS -->
+  <div class="next-steps">
+    <p class="section-eyebrow">What happens next</p>
+    <div class="steps">
+
+      <div class="step">
+        <div class="step-num">01</div>
+        <div class="step-body">
+          <h4>Application Review</h4>
+          <p>Our team reviews your credentials, license, and practice information. We verify independently and may reach out if we need anything additional.</p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">02</div>
+        <div class="step-body">
+          <h4>Approval &amp; Plan Selection</h4>
+          <p>Once approved, you'll receive an email with a link to select your subscription plan and complete onboarding. Your profile goes live after your plan is active.</p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">03</div>
+        <div class="step-body">
+          <h4>Profile Published</h4>
+          <p>Your verified profile is published to the BeautyJar network — searchable by specialty, location, and service. You'll receive a shareable profile link to use however you like.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- PRICING -->
+  <div class="pricing-section">
+    <div class="pricing-header">
+      <p class="section-eyebrow">Membership Plans</p>
+      <h2 class="pricing-title">Choose the Plan That Fits Your Practice</h2>
+      <p class="pricing-sub">All plans include verification, a professional profile, and directory placement. Higher tiers unlock priority placement, enhanced features, and editorial opportunities.</p>
+    </div>
+
+    <div class="tier-grid">
+
+      <!-- VERIFIED -->
+      <div class="tier">
+        <span class="tier-badge">Verified</span>
+        <div class="tier-name">Verified</div>
+        <div class="tier-price">$199</div>
+        <div class="tier-period">per month</div>
+        <hr class="tier-divider" />
+        <ul class="tier-features">
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>BeautyJar Verified badge</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Professional profile page</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Directory listing &amp; search</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>License &amp; identity verified</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Booking link included</li>
+        </ul>
+        <a href="mailto:providers@beautyjar.com?subject=Verified Plan Inquiry" class="tier-cta">
+          Select Verified <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+
+      <!-- PROFESSIONAL -->
+      <div class="tier">
+        <span class="tier-badge">Professional</span>
+        <div class="tier-name">Professional</div>
+        <div class="tier-price">$299</div>
+        <div class="tier-period">per month</div>
+        <hr class="tier-divider" />
+        <ul class="tier-features">
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Everything in Verified</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Priority placement in directory</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Enhanced profile layout</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Optional highlight block</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Telehealth multi-state display</li>
+        </ul>
+        <a href="mailto:providers@beautyjar.com?subject=Professional Plan Inquiry" class="tier-cta">
+          Select Professional <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+
+      <!-- PREMIER -->
+      <div class="tier featured">
+        <span class="tier-badge">Most Visibility</span>
+        <div class="tier-name">Premier</div>
+        <div class="tier-price">$399</div>
+        <div class="tier-period">per month</div>
+        <hr class="tier-divider" />
+        <ul class="tier-features">
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Everything in Professional</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Top placement in category</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Homepage spotlight eligibility</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Editorial feature eligibility</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Regional &amp; category exclusivity</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Dedicated admin support</li>
+        </ul>
+        <a href="mailto:providers@beautyjar.com?subject=Premier Plan Inquiry" class="tier-cta">
+          Select Premier <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+
+    </div>
+
+    <p class="pricing-note">Billing begins once your application is approved and your profile is ready to publish. You will not be charged during the review period.</p>
+
+  </div>
+
+  <!-- CONTACT -->
+  <div class="contact-strip">
+    <p>Questions about your application or the plans?</p>
+    <a href="mailto:providers@beautyjar.com">providers@beautyjar.com</a>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <span class="footer-copy">© 2025 BeautyJar. Verified Women's Care Network.</span>
+    <nav class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="providers.html">Find Providers</a>
+      <a href="#">Privacy Policy</a>
+    </nav>
+  </footer>
+
+</body>
+</html>
