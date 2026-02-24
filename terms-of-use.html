@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Terms of Use – BeautyJar</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --white:#ffffff; --charcoal:#1a1a18; --mid:#4a4a45; --muted:#999999; --border:#e4e4e4; --green:#1e2822; }
+    body { font-family:'Jost',sans-serif; background:var(--white); color:var(--charcoal); font-weight:300; -webkit-font-smoothing:antialiased; }
+    .top-bar { display:flex; align-items:center; justify-content:space-between; padding:14px 40px; background:var(--white); border-bottom:1px solid var(--border); position:sticky; top:0; z-index:100; }
+    .logo-link { font-family:'Cormorant Garamond',serif; font-weight:700; font-size:20px; letter-spacing:.2em; text-transform:uppercase; color:var(--charcoal); text-decoration:none; }
+    .top-bar-actions { display:flex; align-items:center; gap:18px; }
+    .link-plain { font-size:13px; color:var(--charcoal); text-decoration:none; transition:opacity .2s; }
+    .link-plain:hover { opacity:.6; }
+    .btn-dark { background:var(--green); color:white; font-family:'Jost',sans-serif; font-size:13px; font-weight:500; letter-spacing:.06em; padding:9px 18px; border:none; text-decoration:none; display:inline-block; transition:opacity .2s; }
+    .btn-dark:hover { opacity:.82; }
+    .page-header { text-align:center; padding:72px 40px 56px; border-bottom:1px solid var(--border); }
+    .header-eyebrow { font-size:10.5px; letter-spacing:.28em; text-transform:uppercase; color:var(--muted); margin-bottom:14px; }
+    .header-title { font-family:'Cormorant Garamond',serif; font-size:clamp(40px,6vw,64px); font-weight:600; line-height:1; margin-bottom:16px; }
+    .header-meta { font-size:13px; color:var(--muted); }
+    .content-wrap { max-width:740px; margin:0 auto; padding:64px 24px 100px; }
+    .intro { font-family:'Cormorant Garamond',serif; font-size:20px; font-style:italic; color:var(--mid); line-height:1.7; margin-bottom:52px; padding-bottom:52px; border-bottom:1px solid var(--border); }
+    .section { margin-bottom:44px; }
+    .section h2 { font-family:'Cormorant Garamond',serif; font-size:24px; font-weight:600; color:var(--charcoal); margin-bottom:14px; line-height:1.2; }
+    .section p { font-size:15px; line-height:1.85; color:var(--mid); margin-bottom:14px; }
+    .section p:last-child { margin-bottom:0; }
+    .section ul { margin:0 0 14px 20px; }
+    .section ul li { font-size:15px; line-height:1.8; color:var(--mid); margin-bottom:6px; }
+    .section strong { color:var(--charcoal); font-weight:500; }
+    .section a { color:var(--charcoal); text-decoration:underline; text-underline-offset:3px; }
+    .divider { width:36px; height:1px; background:var(--border); margin:44px 0; }
+    .site-footer { border-top:1px solid var(--border); padding:32px 40px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px; }
+    .footer-copy { font-size:12px; color:var(--muted); }
+    .footer-links { display:flex; gap:24px; flex-wrap:wrap; }
+    .footer-links a { font-size:12px; color:var(--muted); text-decoration:none; transition:color .2s; }
+    .footer-links a:hover { color:var(--charcoal); }
+    @keyframes fadeUp { from{opacity:0;transform:translateY(12px)} to{opacity:1;transform:translateY(0)} }
+    .page-header { animation:fadeUp .5s ease both; }
+    .content-wrap { animation:fadeUp .5s .08s ease both; }
+    @media(max-width:640px){.top-bar{padding:14px 24px;}.page-header{padding:48px 24px 40px;}.content-wrap{padding:48px 24px 72px;}.site-footer{padding:28px 24px;flex-direction:column;align-items:flex-start;}}
+
+    .legal-section {
+      margin-bottom: 48px;
+      padding-bottom: 40px;
+      border-bottom: 1px solid var(--border);
+    }
+    .legal-section:last-of-type { border-bottom: none; }
+    .legal-heading {
+      font-family: 'Jost', sans-serif;
+      font-size: 11px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--charcoal);
+      margin-bottom: 18px;
+    }
+    .legal-section p {
+      font-size: 14px;
+      color: var(--mid);
+      line-height: 1.9;
+      margin-bottom: 14px;
+    }
+    .legal-section p strong { color: var(--charcoal); }
+    .legal-section ul {
+      padding-left: 0;
+      list-style: none;
+      margin: 14px 0 18px;
+    }
+    .legal-section ul li {
+      font-size: 13.5px;
+      color: var(--mid);
+      line-height: 1.85;
+      padding-left: 20px;
+      position: relative;
+      margin-bottom: 6px;
+    }
+    .legal-section ul li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--border);
+      font-size: 11px;
+    }
+    .legal-section a { color: var(--charcoal); text-decoration: underline; text-underline-offset: 3px; }
+
+  </style>
+</head>
+<body>
+
+  <header class="top-bar">
+    <a href="index.html" class="logo-link">BeautyJar</a>
+    <nav class="top-bar-actions">
+      <a href="the-edit.html" class="link-plain">The Edit</a>
+      <a href="providers.html" class="link-plain">Find Providers</a>
+      <a href="get-featured.html" class="btn-dark">Get Featured</a>
+    </nav>
+  </header>
+
+  <div class="page-header">
+    <p class="header-eyebrow">Legal</p>
+    <h1 class="header-title">Terms of Use</h1>
+    <p class="header-meta">Effective Date: March 1, 2026 &nbsp;&middot;&nbsp; Last Updated: March 1, 2026</p>
+  </div>
+
+  <div class="content-wrap">
+
+    <p class="intro">By accessing or using BeautyJar, you agree to these Terms of Use. Please read them carefully. If you do not agree, do not use the platform.</p>
+
+    <div class="legal-section">
+      <h2 class="legal-heading">1. About BeautyJar</h2>
+      <p>BeautyJar™ is operated by Wenley Technologies and provides an online verified provider directory connecting consumers with independently licensed medical wellness, aesthetic, and women's health providers.</p>
+      <p>BeautyJar is a <strong>platform intermediary only.</strong> We are not a healthcare provider, medical practice, clinic, staffing agency, or licensed referral service. We do not employ, supervise, direct, or control any provider listed on this platform. We do not provide medical advice, diagnosis, treatment, or clinical recommendations of any kind.</p>
+      <p>The relationship is solely between the patient and the provider. BeautyJar is not a party to that relationship.</p>
+    </div>
+
+    <div class="legal-section">
+      <h2 class="legal-heading">2. No Medical Advice</h2>
+      <p>All content on BeautyJar — including provider profiles, editorial articles, treatment descriptions, and educational materials — is for general informational purposes only. Nothing on this platform constitutes medical advice, clinical guidance, or a recommendation to pursue any specific treatment or provider.</p>
+      <p>Any decision to seek care from a listed provider is made solely at your own discretion and risk. BeautyJar strongly encourages all users to independently research providers, consult qualified professionals, and make informed decisions before pursuing any medical or aesthetic treatment.</p>
+    </div>
+
+    <div class="legal-section">
+      <h2 class="legal-heading">3. Verification Disclaimer</h2>
+      <p>BeautyJar conducts a credential verification process prior to approving any provider listing. This process includes license verification through applicable state, national, or international regulatory bodies; identity confirmation; and practice validation.</p>
+      <p><strong>Verification confirms that a provider held a valid, active license at the time of our review. It does not constitute a guarantee, endorsement, or warranty of any kind regarding:</strong></p>
+      <ul>
+        <li>The quality, safety, or outcome of any treatment or service</li>
+        <li>The clinical competency or skill of the provider</li>
+        <li>The accuracy of any information the provider submits beyond what was directly verified</li>
+        <li>A provider's continued licensure, conduct, or standing after the date of verification</li>
+        <li>Whether a provider is appropriate for any individual patient's specific needs</li>
+      </ul>
+      <p>BeautyJar does not continuously monitor provider license status after listing approval. Providers are contractually required to notify us of any change in license status, but BeautyJar cannot guarantee real-time accuracy of all listings.</p>
+      <p>Consumers are encouraged to independently verify provider credentials through the relevant regulatory body in their jurisdiction prior to receiving any treatment.</p>
+    </div>
+
+    <div class="legal-section">
+      <h2 class="legal-heading">4. Credential Verification vs. Clinical Outcomes</h2>
+      <p>There is an important and intentional distinction between what BeautyJar verifies and what BeautyJar does not warrant:</p>
+      <p><strong>What BeautyJar confirms:</strong> That a provider holds or held a valid license issued by a recognized regulatory body, that their identity and practice existence have been confirmed, and that they met our listing criteria at the time of approval.</p>
+      <p><strong>What BeautyJar does not and cannot confirm:</strong> The clinical outcomes, patient satisfaction, complication rates, bedside manner, pricing, facility conditions, staff conduct, or any aspect of the treatment experience.</p>
+      <p>A verified credential does not equal a guaranteed result. Medicine, aesthetics, and wellness treatments carry inherent risks that vary by individual. BeautyJar's verification process is a credentialing filter — not a clinical review, accreditation, or quality rating system.</p>
+      <p><strong>BeautyJar expressly disclaims any liability for harm, injury, dissatisfaction, adverse outcomes, or any other damages arising from treatment received from a provider found through this platform.</strong></p>
+    </div>
+
+    <div class="legal-section">
+      <h2 class="legal-heading">5. Platform Intermediary — No Liability for Provider Conduct</h2>
+      <p>BeautyJar operates solely as a neutral online platform that connects consumers with independently operating licensed providers. BeautyJar has no control over and expressly disclaims all liability for:</p>
+      <ul>
+        <li>Any act, omission, negligence, malpractice, or misconduct by any listed provider</li>
+        <li>Any injury, harm, adverse reaction, or complication resulting from treatment</li>
+        <li>Any dispute, claim, or disagreement between a patient and a provider</li>
+        <li>Any representation made by a provider to a patient outside of their verified credentials</li>
+        <li>Any financial loss, billing dispute, or refund matter between a patient and a provider</li>
+        <li>Any breach of patient confidentiality or HIPAA obligations by a listed provider</li>
+      </ul>
+      <p>Providers listed on BeautyJar are independent professionals operating their own practices. They are not agents, employees, partners, or representatives of BeautyJar or Wenley Technologies.</p>
+      <p>If you have a complaint about a provider, you should contact the relevant licensing board or regulatory body in your jurisdiction. BeautyJar will cooperate with regulatory inquiries but is not a party to any clinical dispute.</p>
+    </div>
+
+    <div class="legal-section">
+      <h2 class="legal-heading">6. Consumer Use</h2>
+      <p>As a consumer using BeautyJar, you agree to:</p>
+      <ul>
+        <li>Use the platform for lawful purposes only</li>
+        <li>Not submit false or misleading information through any form or inquiry</li>
+        <li>Not scrape, copy, or redistribute directory listings or provider information</li>
+        <li>Not interfere with or disrupt platform functionality</li>
+        <li>Acknowledge that your use of this platform does not create a patient-provider relationship with BeautyJar</li>
+      </ul>
+    </div>
+
+    <div class="legal-section">
+      <h2 class="legal-heading">7. Provider Use</h2>
+      <p>Providers listed on BeautyJar agree to:</p>
+      <ul>
+        <li>Submit accurate, complete, and truthful information during the application and onboarding process</li>
+        <li>Maintain a valid, active license in all jurisdictions where they practice</li>
+        <li>Notify BeautyJar promptly — and in no event later than 7 days — if their license status changes, is suspended, restricted, or revoked</li>
+        <li>Not misrepresent their credentials, training, services, or qualifications on their profile</li>
+        <li>Comply with all applicable laws, regulations, and professional standards in their jurisdiction</li>
+        <li>Maintain appropriate professional liability (malpractice) insurance</li>
+        <li>Accept sole responsibility for all patient interactions, treatment decisions, and clinical outcomes</li>
+      </ul>
+      <p>BeautyJar reserves the right to suspend or permanently remove any provider listing at any time, without notice or refund, if a provider has violated these terms, if their license status has changed, or if their listing is inconsistent with the integrity and standards of the platform.</p>
+    </div>
+
+    <div class="legal-section">
+      <h2 class="legal-heading">8. Subscriptions and Payments</h2>
+      <p>Provider subscriptions are billed monthly through Stripe and automatically renew unless cancelled. Cancellations take effect at the end of the current billing period — listings remain active through the final paid month. BeautyJar does not offer refunds for partial months or unused subscription periods.</p>
+      <p>BeautyJar reserves the right to adjust subscription pricing with reasonable advance notice to active providers. Continued subscription after a price change constitutes acceptance of the new pricing.</p>
+      <p>Billing questions: <a href="mailto:providers@beautyjar.com">providers@beautyjar.com</a></p>
+    </div>
+
+    <div class="legal-section">
+      <h2 class="legal-heading">9. Intellectual Property</h2>
+      <p>All content on BeautyJar — including platform design, editorial articles, the BeautyJar name and logo, and verification badge graphics — is the property of BeautyJar™ / Wenley Technologies and may not be reproduced, copied, or used without prior written permission.</p>
+      <p>Active subscribers may display their BeautyJar verification badge on their own website and marketing materials to indicate verified status. This license is non-transferable and terminates immediately upon cancellation, suspension, or removal of the provider's listing.</p>
+    </div>
+
+    <div class="legal-section">
+      <h2 class="legal-heading">10. Limitation of Liability</h2>
+      <p>To the fullest extent permitted by applicable law, BeautyJar, Wenley Technologies, and their respective officers, directors, employees, and agents shall not be liable for any direct, indirect, incidental, special, consequential, punitive, or exemplary damages of any kind, including but not limited to:</p>
+      <ul>
+        <li>Physical injury, medical complications, or adverse outcomes resulting from treatment by a listed provider</li>
+        <li>Reliance on any provider profile, credential listing, or editorial content on this platform</li>
+        <li>Any interaction, transaction, or dispute between a user and a listed provider</li>
+        <li>Loss of data, revenue, or business arising from use of the platform</li>
+        <li>Any unauthorized access to or alteration of your information</li>
+      </ul>
+      <p>BeautyJar is provided "as is" and "as available" without warranties of any kind, express or implied, including but not limited to warranties of merchantability, fitness for a particular purpose, or non-infringement.</p>
+      <p>In jurisdictions that do not allow the exclusion of certain warranties or the limitation of liability for certain damages, BeautyJar's liability shall be limited to the maximum extent permitted by law.</p>
+    </div>
+
+    <div class="legal-section">
+      <h2 class="legal-heading">11. Indemnification</h2>
+      <p>You agree to indemnify, defend, and hold harmless BeautyJar, Wenley Technologies, and their respective officers, directors, employees, contractors, and agents from and against any and all claims, liabilities, damages, losses, costs, and expenses (including reasonable legal fees) arising out of or related to:</p>
+      <ul>
+        <li>Your use of the platform</li>
+        <li>Your violation of these Terms of Use</li>
+        <li>Any services you provide or receive in connection with your use of BeautyJar</li>
+        <li>Any misrepresentation of your credentials, qualifications, or practice (providers)</li>
+      </ul>
+    </div>
+
+    <div class="legal-section">
+      <h2 class="legal-heading">12. Third-Party Links</h2>
+      <p>Provider profiles and platform pages may include links to external websites, booking platforms, or third-party services. BeautyJar is not responsible for the content, accuracy, privacy practices, or availability of any third-party sites. Links are provided for convenience only and do not constitute an endorsement.</p>
+    </div>
+
+    <div class="legal-section">
+      <h2 class="legal-heading">13. Governing Law</h2>
+      <p>These Terms of Use are governed by and construed in accordance with the laws of the United States. Any disputes arising from use of this platform shall first be subject to good-faith negotiation between the parties. If resolution cannot be reached, disputes shall be submitted to binding arbitration in accordance with applicable arbitration rules.</p>
+    </div>
+
+    <div class="legal-section">
+      <h2 class="legal-heading">14. Changes to These Terms</h2>
+      <p>BeautyJar may update these Terms of Use at any time. Changes will be reflected by an updated effective date at the top of this page. Continued use of BeautyJar after any changes constitutes your acceptance of the revised terms. We encourage users to review this page periodically.</p>
+    </div>
+
+    <div class="legal-section">
+      <h2 class="legal-heading">15. Contact</h2>
+      <p>Questions about these Terms of Use: <a href="mailto:hello@beautyjar.com">hello@beautyjar.com</a></p>
+    </div>
+
+    <div class="legal-footer">
+      <p>BeautyJar™ is operated by Wenley Technologies &nbsp;&middot;&nbsp; beautyjar.com</p>
+    </div>
+
+  </div>
+
+<footer class="site-footer">
+    <span class="footer-copy">© 2026 BeautyJar™ is operated by Wenley Technologies. All rights reserved.
