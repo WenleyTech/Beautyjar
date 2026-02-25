@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Find Providers – BeautyJar Verified Network</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --white:    #ffffff;
+      --cream:    #f5f5f5;
+      --charcoal: #1a1a18;
+      --mid:      #4a4a45;
+      --muted:    #999999;
+      --border:   #e4e4e4;
+      --green:    #1e2822;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Jost', sans-serif;
+      background: var(--white);
+      color: var(--charcoal);
+      font-weight: 300;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── TOP BAR ── */
+    .top-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 32px;
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .logo-link {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 700;
+      font-size: 20px;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--charcoal);
+      text-decoration: none;
+    }
+
+    .top-bar-actions { display: flex; align-items: center; gap: 18px; }
+
+    .link-plain {
+      font-size: 13px;
+      letter-spacing: .04em;
+      color: var(--charcoal);
+      text-decoration: none;
+      font-weight: 400;
+      transition: opacity .2s;
+    }
+    .link-plain:hover { opacity: .6; }
+
+    .btn-dark {
+      background: var(--green);
+      color: white;
+      font-family: 'Jost', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: .06em;
+      padding: 9px 18px;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: opacity .2s;
+    }
+    .btn-dark:hover { opacity: .82; }
+
+    /* ── PAGE HEADER ── */
+    .page-header {
+      padding: 40px 32px 0;
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .page-header-top {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .page-eyebrow {
+      font-size: 10.5px;
+      letter-spacing: .24em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+
+    .page-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(28px, 4vw, 38px);
+      font-weight: 600;
+      line-height: 1.1;
+    }
+
+    .result-count {
+      font-size: 12px;
+      color: var(--muted);
+      letter-spacing: .04em;
+    }
+
+    /* ── SEARCH ── */
+    .search-bar {
+      display: flex;
+      align-items: center;
+      border: 1px solid var(--border);
+      background: var(--cream);
+      max-width: 520px;
+      margin-bottom: 24px;
+    }
+
+    .search-bar input {
+      flex: 1;
+      border: none;
+      outline: none;
+      font-family: 'Jost', sans-serif;
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--charcoal);
+      padding: 12px 16px;
+      background: transparent;
+    }
+    .search-bar input::placeholder { color: var(--muted); }
+    .search-bar svg {
+      width: 16px; height: 16px;
+      stroke: var(--muted); fill: none; stroke-width: 2;
+      margin-right: 14px; flex-shrink: 0;
+    }
+
+    /* ── FILTER TABS ── */
+    .filter-tabs {
+      display: flex;
+      overflow-x: auto;
+      scrollbar-width: none;
+      border-top: 1px solid var(--border);
+      margin: 0 -32px;
+      padding: 0 32px;
+    }
+    .filter-tabs::-webkit-scrollbar { display: none; }
+
+    .filter-tab {
+      font-size: 12px;
+      letter-spacing: .06em;
+      color: var(--muted);
+      padding: 13px 20px;
+      cursor: pointer;
+      white-space: nowrap;
+      border-bottom: 2px solid transparent;
+      border-top: none; border-left: none; border-right: none;
+      background: none;
+      font-family: 'Jost', sans-serif;
+      font-weight: 400;
+      transition: color .2s, border-color .2s;
+    }
+    .filter-tab:hover { color: var(--charcoal); }
+    .filter-tab.active {
+      color: var(--charcoal);
+      border-bottom-color: var(--charcoal);
+      font-weight: 500;
+    }
+
+    /* ── PAGE BODY ── */
+    .page-body {
+      display: grid;
+      grid-template-columns: 210px 1fr;
+      align-items: start;
+      min-height: calc(100vh - 200px);
+    }
+
+    @media (max-width: 720px) {
+      .page-body { grid-template-columns: 1fr; }
+      .sidebar { display: none; }
+    }
+
+    /* ── SIDEBAR ── */
+    .sidebar {
+      border-right: 1px solid var(--border);
+      padding: 28px 20px;
+      position: sticky;
+      top: 57px;
+      max-height: calc(100vh - 57px);
+      overflow-y: auto;
+    }
+
+    .filter-group { margin-bottom: 24px; }
+
+    .filter-group-title {
+      font-size: 9.5px;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      font-weight: 500;
+      color: var(--charcoal);
+      margin-bottom: 11px;
+    }
+
+    .filter-option {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      margin-bottom: 8px;
+      cursor: pointer;
+    }
+
+    .filter-option input[type="checkbox"] {
+      width: 13px; height: 13px;
+      accent-color: var(--charcoal);
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+
+    .filter-option label {
+      font-size: 12.5px;
+      color: var(--mid);
+      cursor: pointer;
+      font-weight: 300;
+    }
+
+    .filter-divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 18px 0;
+    }
+
+    .clear-filters {
+      font-size: 11px;
+      letter-spacing: .06em;
+      color: var(--muted);
+      text-decoration: underline;
+      cursor: pointer;
+      background: none;
+      border: none;
+      font-family: 'Jost', sans-serif;
+      padding: 0;
+    }
+    .clear-filters:hover { color: var(--charcoal); }
+
+    /* active filter chip indicator */
+    .filter-active-count {
+      display: none;
+      font-size: 10px;
+      background: var(--charcoal);
+      color: white;
+      padding: 1px 6px;
+      margin-left: 6px;
+      border-radius: 10px;
+    }
+
+    /* ── GRID WRAP ── */
+    .grid-wrap { padding: 28px 32px; }
+
+    .sort-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 24px;
+    }
+
+    .sort-label { font-size: 12px; color: var(--muted); }
+
+    .sort-select {
+      font-family: 'Jost', sans-serif;
+      font-size: 12px;
+      color: var(--charcoal);
+      border: 1px solid var(--border);
+      background: white;
+      padding: 6px 10px;
+      outline: none;
+      cursor: pointer;
+    }
+
+    /* ── PROVIDER GRID ── */
+    .provider-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+      gap: 16px;
+    }
+
+    /* ── PROVIDER CARD ── */
+    .provider-card {
+      background: white;
+      border: 1px solid var(--border);
+      cursor: pointer;
+      transition: box-shadow .25s, transform .2s;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+    .provider-card:hover {
+      box-shadow: 0 6px 24px rgba(0,0,0,.07);
+      transform: translateY(-2px);
+    }
+    .provider-card.hidden { display: none; }
+
+    .card-photo {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+    }
+
+    .card-body { padding: 14px 16px 16px; }
+
+    .card-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: var(--cream);
+      font-size: 9.5px;
+      letter-spacing: .1em;
+      font-weight: 500;
+      text-transform: uppercase;
+      color: var(--charcoal);
+      padding: 3px 7px;
+      margin-bottom: 9px;
+    }
+    .card-badge svg { width: 9px; height: 9px; stroke: var(--charcoal); fill: none; stroke-width: 2.5; }
+
+    .card-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 2px;
+      line-height: 1.2;
+    }
+
+    .card-title { font-size: 11.5px; color: var(--muted); margin-bottom: 10px; }
+
+    .card-tags { display: flex; flex-wrap: wrap; gap: 4px; margin-bottom: 12px; }
+
+    .tag {
+      font-size: 10px;
+      letter-spacing: .04em;
+      color: var(--mid);
+      border: 1px solid var(--border);
+      padding: 3px 7px;
+    }
+
+    .card-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 11px;
+      border-top: 1px solid var(--border);
+    }
+
+    .card-location {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 11px;
+      color: var(--muted);
+    }
+    .card-location svg { width: 10px; height: 10px; stroke: var(--muted); fill: none; stroke-width: 2; }
+
+    .card-cta {
+      font-size: 10.5px;
+      letter-spacing: .08em;
+      font-weight: 500;
+      color: var(--charcoal);
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      transition: gap .2s;
+    }
+    .provider-card:hover .card-cta { gap: 7px; }
+    .card-cta svg { width: 10px; height: 10px; stroke: currentColor; fill: none; stroke-width: 2.5; }
+
+    /* ── NO RESULTS ── */
+    .no-results {
+      display: none;
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 64px 24px;
+    }
+    .no-results p { font-size: 14px; color: var(--muted); margin-bottom: 16px; }
+    .no-results a {
+      font-size: 12px;
+      letter-spacing: .08em;
+      font-weight: 500;
+      text-transform: uppercase;
+      color: var(--charcoal);
+      text-decoration: underline;
+    }
+
+    /* ── LOAD MORE ── */
+    .load-more-wrap { text-align: center; padding: 40px 0 56px; }
+
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border: 1px solid var(--charcoal);
+      background: transparent;
+      font-family: 'Jost', sans-serif;
+      font-size: 11.5px;
+      font-weight: 500;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--charcoal);
+      padding: 12px 32px;
+      cursor: pointer;
+      transition: background .2s, color .2s;
+    }
+    .btn-outline:hover { background: var(--charcoal); color: white; }
+    .btn-outline:disabled { opacity: .35; cursor: default; }
+    .btn-outline:disabled:hover { background: transparent; color: var(--charcoal); }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(10px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .provider-card { animation: fadeUp .35s ease both; }
+  </style>
+</head>
+<body>
+
+  <!-- TOP BAR -->
+  <header class="top-bar">
+    <a href="index.html" class="logo-link">BeautyJar</a>
+    <nav class="top-bar-actions">
+      <a href="index.html" class="link-plain">Home</a>
+      <a href="get-featured.html" class="btn-dark">Get Featured</a>
+    </nav>
+  </header>
+
+  <!-- PAGE HEADER -->
+  <div class="page-header">
+    <div class="page-header-top">
+      <div>
+        <p class="page-eyebrow">Verified Network</p>
+        <h1 class="page-title">Find Providers</h1>
+      </div>
+      <span class="result-count" id="result-count">Showing 8 verified providers</span>
+    </div>
+
+    <div class="search-bar">
+      <input type="text" id="search-input" placeholder="Provider, clinic, service, or city" />
+      <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="22" y2="22"/></svg>
+    </div>
+
+    <div class="filter-tabs">
+      <button class="filter-tab active" data-specialty="all">All Providers</button>
+      <button class="filter-tab" data-specialty="glp1">GLP-1 Weight Loss</button>
+      <button class="filter-tab" data-specialty="hormone">Hormone Balance</button>
+      <button class="filter-tab" data-specialty="metabolic">Metabolic Health</button>
+      <button class="filter-tab" data-specialty="wellness">Wellness</button>
+      <button class="filter-tab" data-specialty="aesthetics">Skin &amp; Aesthetics</button>
+    </div>
+  </div>
+
+  <!-- BODY -->
+  <div class="page-body">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+      <div class="filter-group">
+        <p class="filter-group-title">Specialty</p>
+        <div class="filter-option"><input type="checkbox" class="cb-specialty" value="glp1" id="f-glp1"><label for="f-glp1">GLP-1 / Medical Weight Management</label></div>
+        <div class="filter-option"><input type="checkbox" class="cb-specialty" value="hormone" id="f-hrt"><label for="f-hrt">Hormone Therapy (HRT)</label></div>
+        <div class="filter-option"><input type="checkbox" class="cb-specialty" value="aesthetics" id="f-botox"><label for="f-botox">Botox &amp; Fillers</label></div>
+        <div class="filter-option"><input type="checkbox" class="cb-specialty" value="metabolic" id="f-metabolic"><label for="f-metabolic">Metabolic Health</label></div>
+        <div class="filter-option"><input type="checkbox" class="cb-specialty" value="wellness" id="f-wellness"><label for="f-wellness">Wellness</label></div>
+        <div class="filter-option"><input type="checkbox" class="cb-specialty" value="aesthetics" id="f-skin"><label for="f-skin">Skin &amp; Laser</label></div>
+      </div>
+
+      <hr class="filter-divider" />
+
+      <div class="filter-group">
+        <p class="filter-group-title">Region</p>
+        <div class="filter-option"><input type="checkbox" class="cb-region" value="north-america" id="r-na"><label for="r-na">North America</label></div>
+        <div class="filter-option"><input type="checkbox" class="cb-region" value="uk" id="r-uk"><label for="r-uk">United Kingdom</label></div>
+        <div class="filter-option"><input type="checkbox" class="cb-region" value="europe" id="r-eu"><label for="r-eu">Europe</label></div>
+        <div class="filter-option"><input type="checkbox" class="cb-region" value="west-africa" id="r-wa"><label for="r-wa">West Africa</label></div>
+        <div class="filter-option"><input type="checkbox" class="cb-region" value="east-africa" id="r-ea"><label for="r-ea">East Africa</label></div>
+        <div class="filter-option"><input type="checkbox" class="cb-region" value="south-africa" id="r-sa"><label for="r-sa">South Africa</label></div>
+        <div class="filter-option"><input type="checkbox" class="cb-region" value="asia" id="r-as"><label for="r-as">Asia &amp; Korea</label></div>
+        <div class="filter-option"><input type="checkbox" class="cb-region" value="telehealth" id="r-th"><label for="r-th">Telehealth / Virtual</label></div>
+      </div>
+
+      <hr class="filter-divider" />
+
+      <div class="filter-group">
+        <p class="filter-group-title">Provider Type</p>
+        <div class="filter-option"><input type="checkbox" class="cb-type" value="md" id="t-md"><label for="t-md">MD / Physician</label></div>
+        <div class="filter-option"><input type="checkbox" class="cb-type" value="np" id="t-np"><label for="t-np">Nurse Practitioner</label></div>
+        <div class="filter-option"><input type="checkbox" class="cb-type" value="pa" id="t-pa"><label for="t-pa">Physician Assistant</label></div>
+        <div class="filter-option"><input type="checkbox" class="cb-type" value="rn" id="t-rn"><label for="t-rn">RN / Injector</label></div>
+      </div>
+
+      <hr class="filter-divider" />
+      <button class="clear-filters" id="clear-btn">Clear all filters</button>
+    </aside>
+
+    <!-- GRID -->
+    <main class="grid-wrap">
+      <div class="sort-row">
+        <span class="sort-label">Sort by</span>
+        <select class="sort-select" id="sort-select">
+          <option value="featured">Featured</option>
+          <option value="az">Name A–Z</option>
+          <option value="za">Name Z–A</option>
+        </select>
+      </div>
+
+      <div class="provider-grid" id="provider-grid">
+
+        <!-- Cards — data attributes drive ALL filtering -->
+        <a class="provider-card" href="#"
+           data-specialty="glp1 metabolic"
+           data-region="north-america"
+           data-type="md"
+           data-name="Dr. Sarah Lin"
+           data-order="1">
+          <div class="card-photo" style="background:linear-gradient(160deg,#ddd6cf,#b8a99e)"></div>
+          <div class="card-body">
+            <span class="card-badge"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Verified</span>
+            <div class="card-name">Dr. Sarah Lin, MD</div>
+            <div class="card-title">Internal Medicine · GLP-1</div>
+            <div class="card-tags"><span class="tag">GLP-1</span><span class="tag">Semaglutide</span><span class="tag">Weight Loss</span></div>
+            <div class="card-meta">
+              <span class="card-location"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>New York, NY</span>
+              <span class="card-cta">View <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+            </div>
+          </div>
+        </a>
+
+        <a class="provider-card" href="#"
+           data-specialty="hormone"
+           data-region="north-america telehealth"
+           data-type="md"
+           data-name="Dr. Maya Osei"
+           data-order="2">
+          <div class="card-photo" style="background:linear-gradient(160deg,#d4cac2,#afa095)"></div>
+          <div class="card-body">
+            <span class="card-badge"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Verified</span>
+            <div class="card-name">Dr. Maya Osei, MD</div>
+            <div class="card-title">OB-GYN · Hormone Specialist</div>
+            <div class="card-tags"><span class="tag">HRT</span><span class="tag">Menopause</span><span class="tag">Telehealth</span></div>
+            <div class="card-meta">
+              <span class="card-location"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Los Angeles, CA</span>
+              <span class="card-cta">View <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+            </div>
+          </div>
+        </a>
+
+        <a class="provider-card" href="#"
+           data-specialty="aesthetics"
+           data-region="north-america"
+           data-type="np"
+           data-name="Dr. Elena Cruz"
+           data-order="3">
+          <div class="card-photo" style="background:linear-gradient(160deg,#c8bfb6,#a0908a)"></div>
+          <div class="card-body">
+            <span class="card-badge"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Verified</span>
+            <div class="card-name">Dr. Elena Cruz, NP</div>
+            <div class="card-title">Aesthetic Nurse Practitioner</div>
+            <div class="card-tags"><span class="tag">Botox</span><span class="tag">Fillers</span><span class="tag">Skin</span></div>
+            <div class="card-meta">
+              <span class="card-location"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Miami, FL</span>
+              <span class="card-cta">View <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+            </div>
+          </div>
+        </a>
+
+        <a class="provider-card" href="#"
+           data-specialty="metabolic glp1"
+           data-region="north-america"
+           data-type="md"
+           data-name="Dr. Priya Nair"
+           data-order="4">
+          <div class="card-photo" style="background:linear-gradient(160deg,#bcb2ab,#8a7e7a)"></div>
+          <div class="card-body">
+            <span class="card-badge"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Verified</span>
+            <div class="card-name">Dr. Priya Nair, MD</div>
+            <div class="card-title">Endocrinologist · Metabolic</div>
+            <div class="card-tags"><span class="tag">Metabolic</span><span class="tag">GLP-1</span><span class="tag">Diabetes</span></div>
+            <div class="card-meta">
+              <span class="card-location"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Chicago, IL</span>
+              <span class="card-cta">View <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+            </div>
+          </div>
+        </a>
+
+        <a class="provider-card" href="#"
+           data-specialty="hormone wellness"
+           data-region="west-africa telehealth"
+           data-type="pa"
+           data-name="Dr. Aisha Brooks"
+           data-order="5">
+          <div class="card-photo" style="background:linear-gradient(160deg,#d0c8bf,#a89e96)"></div>
+          <div class="card-body">
+            <span class="card-badge"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Verified</span>
+            <div class="card-name">Dr. Aisha Brooks, PA</div>
+            <div class="card-title">Physician Assistant · Wellness</div>
+            <div class="card-tags"><span class="tag">HRT</span><span class="tag">IV Therapy</span><span class="tag">Telehealth</span></div>
+            <div class="card-meta">
+              <span class="card-location"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Lagos, Nigeria</span>
+              <span class="card-cta">View <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+            </div>
+          </div>
+        </a>
+
+        <a class="provider-card" href="#"
+           data-specialty="aesthetics"
+           data-region="uk"
+           data-type="rn"
+           data-name="Dr. Camille Dupont"
+           data-order="6">
+          <div class="card-photo" style="background:linear-gradient(160deg,#cec5bc,#a09088)"></div>
+          <div class="card-body">
+            <span class="card-badge"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Verified</span>
+            <div class="card-name">Dr. Camille Dupont, RN</div>
+            <div class="card-title">Aesthetic RN · Injector</div>
+            <div class="card-tags"><span class="tag">Botox</span><span class="tag">Laser</span><span class="tag">Skin</span></div>
+            <div class="card-meta">
+              <span class="card-location"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>London, UK</span>
+              <span class="card-cta">View <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+            </div>
+          </div>
+        </a>
+
+        <a class="provider-card" href="#"
+           data-specialty="glp1 hormone"
+           data-region="south-africa telehealth"
+           data-type="md"
+           data-name="Dr. Sonia Reyes"
+           data-order="7">
+          <div class="card-photo" style="background:linear-gradient(160deg,#e0d8d0,#bfb0a4)"></div>
+          <div class="card-body">
+            <span class="card-badge"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Verified</span>
+            <div class="card-name">Dr. Sonia Reyes, MD</div>
+            <div class="card-title">Family Medicine · GLP-1</div>
+            <div class="card-tags"><span class="tag">GLP-1</span><span class="tag">Hormone</span><span class="tag">Telehealth</span></div>
+            <div class="card-meta">
+              <span class="card-location"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Cape Town, SA</span>
+              <span class="card-cta">View <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+            </div>
+          </div>
+        </a>
+
+        <a class="provider-card" href="#"
+           data-specialty="metabolic aesthetics"
+           data-region="asia"
+           data-type="np"
+           data-name="Dr. Lily Chang"
+           data-order="8">
+          <div class="card-photo" style="background:linear-gradient(160deg,#c4bbb2,#978c84)"></div>
+          <div class="card-body">
+            <span class="card-badge"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Verified</span>
+            <div class="card-name">Dr. Lily Chang, NP</div>
+            <div class="card-title">Nurse Practitioner · Integrative</div>
+            <div class="card-tags"><span class="tag">Metabolic</span><span class="tag">IV Therapy</span><span class="tag">Skin</span></div>
+            <div class="card-meta">
+              <span class="card-location"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Seoul, Korea</span>
+              <span class="card-cta">View <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+            </div>
+          </div>
+        </a>
+
+        <!-- No results message -->
+        <div class="no-results" id="no-results">
+          <p>No providers match your current filters.</p>
+          <a href="#" id="reset-link">Clear all filters</a>
+        </div>
+
+      </div>
+
+      <div class="load-more-wrap">
+        <button class="btn-outline" id="load-more-btn">Load More Providers</button>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    const CARDS_PER_PAGE = 8;
+    const grid = document.getElementById('provider-grid');
+    const countEl = document.getElementById('result-count');
+    const noResults = document.getElementById('no-results');
+    const loadMoreBtn = document.getElementById('load-more-btn');
+    const sortSelect = document.getElementById('sort-select');
+    const searchInput = document.getElementById('search-input');
+    const clearBtn = document.getElementById('clear-btn');
+    const resetLink = document.getElementById('reset-link');
+
+    let visibleCount = CARDS_PER_PAGE;
+    let activeSpecialtyTab = 'all';
+
+    // ── Gather all cards ──
+    function getAllCards() {
+      return [...document.querySelectorAll('.provider-card')];
+    }
+
+    // ── Get active filter values ──
+    function getChecked(cls) {
+      return [...document.querySelectorAll('.' + cls + ':checked')].map(cb => cb.value);
+    }
+
+    // ── Core filter + sort + paginate ──
+    function applyFilters() {
+      const q = searchInput.value.trim().toLowerCase();
+      const specialties = getChecked('cb-specialty');
+      const regions = getChecked('cb-region');
+      const types = getChecked('cb-type');
+
+      let cards = getAllCards();
+
+      // Sort first
+      const sortVal = sortSelect.value;
+      cards.sort((a, b) => {
+        if (sortVal === 'az') return a.dataset.name.localeCompare(b.dataset.name);
+        if (sortVal === 'za') return b.dataset.name.localeCompare(a.dataset.name);
+        return parseInt(a.dataset.order) - parseInt(b.dataset.order); // featured
+      });
+
+      // Re-append in sorted order
+      cards.forEach(c => grid.appendChild(c));
+
+      // Filter
+      let matchCount = 0;
+      cards.forEach(card => {
+        const cardSpecialty = card.dataset.specialty || '';
+        const cardRegion    = card.dataset.region || '';
+        const cardType      = card.dataset.type || '';
+        const cardText      = card.textContent.toLowerCase();
+
+        const matchTab      = activeSpecialtyTab === 'all' || cardSpecialty.includes(activeSpecialtyTab);
+        const matchSearch   = !q || cardText.includes(q);
+        const matchSpecialty= specialties.length === 0 || specialties.some(s => cardSpecialty.includes(s));
+        const matchRegion   = regions.length === 0 || regions.some(r => cardRegion.includes(r));
+        const matchType     = types.length === 0 || types.includes(cardType);
+
+        const visible = matchTab && matchSearch && matchSpecialty && matchRegion && matchType;
+        card.dataset.filtered = visible ? 'true' : 'false';
+        if (visible) matchCount++;
+      });
+
+      // Paginate — show only up to visibleCount of matched cards
+      let shown = 0;
+      cards.forEach(card => {
+        if (card.dataset.filtered === 'true' && shown < visibleCount) {
+          card.style.display = 'block';
+          shown++;
+        } else {
+          card.style.display = 'none';
+        }
+      });
+
+      // No results
+      noResults.style.display = matchCount === 0 ? 'block' : 'none';
+
+      // Count
+      const displaying = Math.min(shown, matchCount);
+      countEl.textContent = `Showing ${displaying} of ${matchCount} verified provider${matchCount !== 1 ? 's' : ''}`;
+
+      // Load more button
+      loadMoreBtn.disabled = shown >= matchCount;
+      loadMoreBtn.style.display = matchCount === 0 ? 'none' : 'inline-flex';
+    }
+
+    // ── Tab filtering ──
+    document.querySelectorAll('.filter-tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        activeSpecialtyTab = tab.dataset.specialty;
+        visibleCount = CARDS_PER_PAGE;
+        applyFilters();
+      });
+    });
+
+    // ── Search ──
+    searchInput.addEventListener('input', () => {
+      visibleCount = CARDS_PER_PAGE;
+      applyFilters();
+    });
+
+    // ── Checkboxes ──
+    document.querySelectorAll('.cb-specialty, .cb-region, .cb-type').forEach(cb => {
+      cb.addEventListener('change', () => {
+        visibleCount = CARDS_PER_PAGE;
+        applyFilters();
+      });
+    });
+
+    // ── Sort ──
+    sortSelect.addEventListener('change', () => {
+      applyFilters();
+    });
+
+    // ── Load more ──
+    loadMoreBtn.addEventListener('click', () => {
+      visibleCount += CARDS_PER_PAGE;
+      applyFilters();
+    });
+
+    // ── Clear filters ──
+    function clearAll() {
+      document.querySelectorAll('.cb-specialty, .cb-region, .cb-type').forEach(cb => cb.checked = false);
+      searchInput.value = '';
+      sortSelect.value = 'featured';
+      activeSpecialtyTab = 'all';
+      document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
+      document.querySelector('.filter-tab[data-specialty="all"]').classList.add('active');
+      visibleCount = CARDS_PER_PAGE;
+      applyFilters();
+    }
+
+    clearBtn.addEventListener('click', clearAll);
+    resetLink.addEventListener('click', (e) => { e.preventDefault(); clearAll(); });
+
+    // ── Pre-fill from URL param ──
+    const urlQ = new URLSearchParams(window.location.search).get('q');
+    if (urlQ) searchInput.value = urlQ;
+
+    // ── Init ──
+    applyFilters();
+  </script>
+
+</body>
+</html>
