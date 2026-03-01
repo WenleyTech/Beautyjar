@@ -1,45 +1,811 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>BeautyJar Verification Standards | BeautyJar</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>How We Verify – BeautyJar</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream: #f4f4f4;
+      --warm-white: #ffffff;
+      --charcoal: #1a1a18;
+      --mid: #4a4a45;
+      --muted: #999999;
+      --border: #e4e4e4;
+      --btn-bg: #1e2822;
+      --btn-text: #ffffff;
+      --section-bg: #f9f8f6;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Jost', sans-serif;
+      background: var(--warm-white);
+      color: var(--charcoal);
+      font-weight: 300;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── TOP BAR ── */
+    .top-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 24px;
+      background: var(--warm-white);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .top-bar-left {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+    .hamburger {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .hamburger span {
+      display: block;
+      width: 22px;
+      height: 1.5px;
+      background: var(--charcoal);
+    }
+    .top-bar-actions {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+    .link-plain {
+      font-size: 13px;
+      letter-spacing: .04em;
+      color: var(--charcoal);
+      text-decoration: none;
+      font-weight: 400;
+      transition: opacity .2s;
+    }
+    .link-plain:hover { opacity: .6; }
+    .btn-dark {
+      background: var(--btn-bg);
+      color: var(--btn-text);
+      font-family: 'Jost', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: .06em;
+      padding: 9px 18px;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: opacity .2s;
+    }
+    .btn-dark:hover { opacity: .82; }
+
+    /* ── LOGO ── */
+    .logo-area {
+      text-align: center;
+      padding: 28px 24px 8px;
+      background: var(--warm-white);
+    }
+    .logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 700;
+      font-size: clamp(42px, 10vw, 72px);
+      letter-spacing: .18em;
+      line-height: 1;
+      color: var(--charcoal);
+      text-transform: uppercase;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .tagline {
+      font-size: 13px;
+      letter-spacing: .22em;
+      color: var(--mid);
+      font-weight: 300;
+      text-transform: uppercase;
+      margin-top: 8px;
+    }
+
+    /* ── PRIMARY NAV ── */
+    .primary-nav {
+      background: var(--warm-white);
+      border-bottom: 1px solid var(--border);
+      border-top: 1px solid var(--border);
+      padding: 0 24px;
+    }
+    .primary-nav ul {
+      display: flex;
+      list-style: none;
+      justify-content: center;
+      gap: 0;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .primary-nav ul::-webkit-scrollbar { display: none; }
+    .primary-nav a {
+      display: block;
+      padding: 14px 20px;
+      font-size: 12px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--mid);
+      text-decoration: none;
+      font-weight: 400;
+      white-space: nowrap;
+      transition: color .2s;
+      border-bottom: 1.5px solid transparent;
+    }
+    .primary-nav a:hover { color: var(--charcoal); }
+    .primary-nav a.active {
+      color: var(--charcoal);
+      border-bottom-color: var(--charcoal);
+    }
+
+    /* ── PAGE HERO ── */
+    .page-hero {
+      text-align: center;
+      padding: 72px 24px 56px;
+      border-bottom: 1px solid var(--border);
+      background: var(--warm-white);
+      position: relative;
+      overflow: hidden;
+    }
+    .page-hero::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 50%;
+      transform: translateX(-50%);
+      width: 1px;
+      height: 48px;
+      background: var(--border);
+    }
+    .page-label {
+      font-size: 11px;
+      letter-spacing: .28em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 400;
+      margin-bottom: 20px;
+      display: block;
+    }
+    .page-hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 600;
+      font-size: clamp(36px, 6vw, 58px);
+      letter-spacing: .04em;
+      line-height: 1.1;
+      color: var(--charcoal);
+      margin-bottom: 24px;
+    }
+    .page-hero h1 em {
+      font-style: italic;
+      font-weight: 400;
+    }
+    .page-hero p {
+      font-size: 15px;
+      line-height: 1.75;
+      color: var(--mid);
+      max-width: 560px;
+      margin: 0 auto;
+      font-weight: 300;
+    }
+
+    /* ── CONTENT WRAPPER ── */
+    .content-wrap {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ── THREE PILLARS ── */
+    .pillars-section {
+      padding: 72px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .section-label {
+      font-size: 11px;
+      letter-spacing: .28em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 400;
+      margin-bottom: 40px;
+      display: block;
+    }
+    .pillars-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 0;
+    }
+    .pillar {
+      padding: 36px 32px;
+      border-right: 1px solid var(--border);
+      position: relative;
+    }
+    .pillar:last-child { border-right: none; }
+    .pillar-number {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 48px;
+      font-weight: 300;
+      color: var(--border);
+      line-height: 1;
+      margin-bottom: 16px;
+      display: block;
+    }
+    .pillar h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20px;
+      font-weight: 600;
+      letter-spacing: .02em;
+      color: var(--charcoal);
+      margin-bottom: 12px;
+    }
+    .pillar p {
+      font-size: 13.5px;
+      line-height: 1.7;
+      color: var(--mid);
+      font-weight: 300;
+    }
+
+    /* ── VERIFICATION INCLUDES ── */
+    .includes-section {
+      padding: 72px 0;
+      border-bottom: 1px solid var(--border);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: start;
+    }
+    .includes-left h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(28px, 4vw, 40px);
+      font-weight: 600;
+      letter-spacing: .02em;
+      line-height: 1.2;
+      color: var(--charcoal);
+      margin-bottom: 16px;
+    }
+    .includes-left h2 em {
+      font-style: italic;
+      font-weight: 400;
+    }
+    .includes-left p {
+      font-size: 14px;
+      line-height: 1.75;
+      color: var(--mid);
+      font-weight: 300;
+    }
+    .includes-right {
+      padding-top: 4px;
+    }
+    .check-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      padding: 20px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .check-item:first-child { border-top: 1px solid var(--border); }
+    .check-mark {
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
+      margin-top: 1px;
+      position: relative;
+    }
+    .check-mark::after {
+      content: '';
+      display: block;
+      width: 10px;
+      height: 6px;
+      border-left: 1.5px solid var(--charcoal);
+      border-bottom: 1.5px solid var(--charcoal);
+      transform: rotate(-45deg);
+      margin-top: 4px;
+      margin-left: 3px;
+    }
+    .check-item-text {
+      flex: 1;
+    }
+    .check-item-title {
+      font-size: 13.5px;
+      font-weight: 500;
+      color: var(--charcoal);
+      letter-spacing: .03em;
+      margin-bottom: 3px;
+    }
+    .check-item-desc {
+      font-size: 12.5px;
+      color: var(--muted);
+      font-weight: 300;
+      line-height: 1.55;
+    }
+
+    /* ── ACTIVE STATUS BAND ── */
+    .status-band {
+      background: var(--section-bg);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 56px 0;
+    }
+    .status-band-inner {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 56px;
+      align-items: center;
+    }
+    .status-badge-display {
+      text-align: center;
+    }
+    .badge-circle {
+      width: 96px;
+      height: 96px;
+      border: 1px solid var(--charcoal);
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 3px;
+    }
+    .badge-circle-label {
+      font-size: 8px;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 400;
+    }
+    .badge-circle-main {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: .1em;
+      color: var(--charcoal);
+      text-transform: uppercase;
+    }
+    .status-band-text h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 26px;
+      font-weight: 600;
+      color: var(--charcoal);
+      margin-bottom: 12px;
+    }
+    .status-band-text p {
+      font-size: 14px;
+      line-height: 1.75;
+      color: var(--mid);
+      font-weight: 300;
+      margin-bottom: 12px;
+    }
+    .status-band-text p:last-child { margin-bottom: 0; }
+
+    /* ── NOTE SECTION ── */
+    .note-section {
+      padding: 64px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .note-box {
+      border: 1px solid var(--border);
+      padding: 36px 40px;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 32px;
+      align-items: start;
+    }
+    .note-icon {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 32px;
+      font-weight: 300;
+      font-style: italic;
+      color: var(--border);
+      line-height: 1;
+      padding-top: 2px;
+    }
+    .note-box h4 {
+      font-size: 11px;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 400;
+      margin-bottom: 10px;
+    }
+    .note-box p {
+      font-size: 14px;
+      line-height: 1.75;
+      color: var(--mid);
+      font-weight: 300;
+    }
+
+    /* ── FRAMEWORK SECTION ── */
+    .framework-section {
+      padding: 72px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .framework-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+    .framework-text h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(28px, 4vw, 38px);
+      font-weight: 600;
+      letter-spacing: .02em;
+      line-height: 1.2;
+      color: var(--charcoal);
+      margin-bottom: 16px;
+    }
+    .framework-text h2 em {
+      font-style: italic;
+      font-weight: 400;
+    }
+    .framework-text p {
+      font-size: 14px;
+      line-height: 1.75;
+      color: var(--mid);
+      font-weight: 300;
+      margin-bottom: 28px;
+    }
+    .framework-meta {
+      font-size: 11.5px;
+      letter-spacing: .06em;
+      color: var(--muted);
+      font-weight: 400;
+      margin-top: 16px;
+      display: block;
+    }
+    .btn-download {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--btn-bg);
+      color: var(--btn-text);
+      font-family: 'Jost', sans-serif;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      padding: 13px 24px;
+      text-decoration: none;
+      transition: opacity .2s;
+    }
+    .btn-download:hover { opacity: .82; }
+    .btn-download svg {
+      width: 14px;
+      height: 14px;
+      flex-shrink: 0;
+    }
+    .framework-doc-preview {
+      border: 1px solid var(--border);
+      background: var(--section-bg);
+      padding: 32px;
+    }
+    .doc-preview-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      margin-bottom: 24px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--border);
+    }
+    .doc-preview-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--charcoal);
+      line-height: 1.3;
+    }
+    .doc-preview-version {
+      font-size: 10px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 400;
+      white-space: nowrap;
+      padding-top: 3px;
+    }
+    .doc-preview-toc {
+      list-style: none;
+    }
+    .doc-preview-toc li {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: 8px 0;
+      border-bottom: 1px dotted var(--border);
+      font-size: 12px;
+      color: var(--mid);
+      font-weight: 300;
+    }
+    .doc-preview-toc li:last-child { border-bottom: none; }
+    .doc-preview-toc li span:first-child {
+      letter-spacing: .02em;
+    }
+    .doc-preview-toc li span:last-child {
+      color: var(--muted);
+      font-size: 11px;
+    }
+    .doc-preview-footer {
+      margin-top: 20px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+      font-size: 10.5px;
+      color: var(--muted);
+      font-weight: 300;
+      letter-spacing: .04em;
+    }
+
+    /* ── FOOTER ── */
+    .site-footer {
+      padding: 48px 24px;
+      border-top: 1px solid var(--border);
+      text-align: center;
+    }
+    .footer-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 700;
+      font-size: 24px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--charcoal);
+      margin-bottom: 16px;
+      display: block;
+    }
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 28px;
+      list-style: none;
+      margin-bottom: 24px;
+    }
+    .footer-links a {
+      font-size: 11px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color .2s;
+    }
+    .footer-links a:hover { color: var(--charcoal); }
+    .footer-copy {
+      font-size: 11px;
+      color: var(--muted);
+      font-weight: 300;
+      letter-spacing: .04em;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 700px) {
+      .pillars-grid {
+        grid-template-columns: 1fr;
+      }
+      .pillar {
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+        padding: 32px 0;
+      }
+      .pillar:last-child { border-bottom: none; }
+      .includes-section,
+      .framework-inner {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+      .status-band-inner {
+        grid-template-columns: 1fr;
+        gap: 32px;
+        text-align: center;
+      }
+      .badge-circle { margin: 0 auto; }
+      .note-box {
+        grid-template-columns: 1fr;
+        gap: 16px;
+        padding: 28px 24px;
+      }
+    }
+  </style>
 </head>
 <body>
 
-<h1>How BeautyJar Verifies Providers</h1>
+  <!-- TOP BAR -->
+  <header class="top-bar">
+    <div class="top-bar-left">
+      <div class="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+    <div class="top-bar-actions">
+      <a href="#" class="link-plain">Find a Provider</a>
+      <a href="#" class="btn-dark">Get Featured</a>
+    </div>
+  </header>
 
-<p>
-BeautyJar is a verification-based provider network designed to help patients identify qualified professionals in women's health, medical weight management, hormone care, and aesthetic medicine.
-</p>
+  <!-- LOGO -->
+  <div class="logo-area">
+    <a href="/" class="logo">BeautyJar</a>
+    <p class="tagline">Verified Women's Care Network</p>
+  </div>
 
-<p>
-Our verification process focuses on confirming professional standing and practice legitimacy so that patients can make informed decisions when selecting care.
-</p>
+  <!-- PRIMARY NAV -->
+  <nav class="primary-nav">
+    <ul>
+      <li><a href="#">Find Providers</a></li>
+      <li><a href="#">GLP-1 &amp; Weight</a></li>
+      <li><a href="#">Hormone Therapy</a></li>
+      <li><a href="#">Aesthetics</a></li>
+      <li><a href="#">Wellness</a></li>
+      <li><a href="#" class="active">How We Verify</a></li>
+      <li><a href="#">The Edit</a></li>
+    </ul>
+  </nav>
 
-<h2>Verification Includes</h2>
-<ul>
-    <li>Active professional license verification</li>
-    <li>Identity confirmation</li>
-    <li>Practice legitimacy review</li>
-    <li>Ongoing monitoring and annual review</li>
-</ul>
+  <!-- PAGE HERO -->
+  <section class="page-hero">
+    <span class="page-label">Verification Standards</span>
+    <h1>How BeautyJar<br><em>Verifies Providers</em></h1>
+    <p>BeautyJar is a verification-first provider network designed to help patients identify qualified professionals in women's health, medical weight management, hormone care, and aesthetic medicine.</p>
+  </section>
 
-<h2>Important Note</h2>
-<p>
-BeautyJar verification confirms that a provider meets baseline professional and operational standards at the time of review. Verification does not constitute a guarantee of clinical outcomes or quality of care.
-</p>
+  <!-- THREE PILLARS -->
+  <section class="pillars-section">
+    <div class="content-wrap">
+      <span class="section-label">Our Framework</span>
+      <div class="pillars-grid">
+        <div class="pillar">
+          <span class="pillar-number">I</span>
+          <h3>License Integrity</h3>
+          <p>We confirm that every provider holds a valid, active professional license appropriate to the services they offer, including review of publicly available disciplinary records.</p>
+        </div>
+        <div class="pillar">
+          <span class="pillar-number">II</span>
+          <h3>Identity Confirmation</h3>
+          <p>We verify that the individual presenting as the provider is the actual holder of the credentials being represented — particularly important in medical director models.</p>
+        </div>
+        <div class="pillar">
+          <span class="pillar-number">III</span>
+          <h3>Practice Legitimacy</h3>
+          <p>We evaluate whether the practice itself is operating as represented, including confirmation of business presence and alignment between services offered and credentials held.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<h2>Public Verification Framework</h2>
+  <!-- VERIFICATION INCLUDES -->
+  <section class="content-wrap">
+    <div class="includes-section">
+      <div class="includes-left">
+        <h2>Verification<br><em>Includes</em></h2>
+        <p>Our process focuses on confirming professional standing and practice legitimacy so that patients can make informed decisions when selecting care.</p>
+      </div>
+      <div class="includes-right">
+        <div class="check-item">
+          <div class="check-mark"></div>
+          <div class="check-item-text">
+            <div class="check-item-title">Active Professional License Verification</div>
+            <div class="check-item-desc">Confirmed against primary licensing authority sources for each jurisdiction.</div>
+          </div>
+        </div>
+        <div class="check-item">
+          <div class="check-mark"></div>
+          <div class="check-item-text">
+            <div class="check-item-title">Identity Confirmation</div>
+            <div class="check-item-desc">The individual and the credential are matched independently of self-report.</div>
+          </div>
+        </div>
+        <div class="check-item">
+          <div class="check-mark"></div>
+          <div class="check-item-text">
+            <div class="check-item-title">Practice Legitimacy Review</div>
+            <div class="check-item-desc">Business presence and services are assessed against the scope of credentials held.</div>
+          </div>
+        </div>
+        <div class="check-item">
+          <div class="check-mark"></div>
+          <div class="check-item-text">
+            <div class="check-item-title">Ongoing Monitoring &amp; Annual Review</div>
+            <div class="check-item-desc">Verified status is actively maintained, not granted once and forgotten.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<p>
-BeautyJar’s verification methodology is documented as a versioned public framework to support transparency and accountability.
-</p>
+  <!-- ACTIVE STATUS BAND -->
+  <div class="status-band">
+    <div class="status-band-inner">
+      <div class="status-badge-display">
+        <div class="badge-circle">
+          <span class="badge-circle-label">BeautyJar</span>
+          <span class="badge-circle-main">Verified</span>
+          <span class="badge-circle-label">Active</span>
+        </div>
+      </div>
+      <div class="status-band-text">
+        <h3>Verification is an Active Status</h3>
+        <p>The BeautyJar Verified badge is not a one-time credential. All verified providers are subject to a twelve-month review cycle from initial verification. If a provider's license lapses or disciplinary proceedings begin, verified status is suspended immediately — without waiting for the next scheduled cycle.</p>
+        <p>Material changes to a provider's practice may also trigger an unscheduled reassessment. Patient-reported concerns are reviewed through a structured process.</p>
+      </div>
+    </div>
+  </div>
 
-<p>
-<a href="/assets/docs/beautyjar-verification-framework-v1-1-jan-2026.pdf" target="_blank" rel="noopener">
-Download the BeautyJar Provider Verification Framework (Version 1.1 – January 2026)
-</a>
-</p>
+  <!-- IMPORTANT NOTE -->
+  <section class="content-wrap">
+    <div class="note-section">
+      <div class="note-box">
+        <div class="note-icon">N</div>
+        <div>
+          <h4>Important Note</h4>
+          <p>BeautyJar verification confirms that a provider meets baseline professional and operational standards at the time of review. Verification does not constitute a guarantee of clinical outcomes or quality of care, a clinical referral or recommendation, or a substitute for the exercise of your own informed judgment when selecting a provider.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FRAMEWORK DOWNLOAD -->
+  <section class="content-wrap">
+    <div class="framework-section">
+      <div class="framework-inner">
+        <div class="framework-text">
+          <span class="section-label">Public Record</span>
+          <h2>Public Verification<br><em>Framework</em></h2>
+          <p>BeautyJar's verification methodology is documented as a versioned public framework, published on Zenodo and OSF, to support transparency and accountability. The framework describes the principles and structural approach that govern our verification process.</p>
+          <a href="BeautyJar_Verification_Framework_v1.1.pdf" class="btn-download" download>
+            <svg viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M7 1v8M4 6l3 3 3-3M2 11h10" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Download Framework (PDF)
+          </a>
+          <span class="framework-meta">Version 1.1 · January 2026 · Wenley Technologies, LLC · CC BY 4.0</span>
+        </div>
+        <div class="framework-doc-preview">
+          <div class="doc-preview-header">
+            <div class="doc-preview-title">BeautyJar Provider<br>Verification Framework</div>
+            <div class="doc-preview-version">v1.1 · Jan 2026</div>
+          </div>
+          <ul class="doc-preview-toc">
+            <li><span>Introduction</span><span>p. 1</span></li>
+            <li><span>Scope and Purpose</span><span>p. 2</span></li>
+            <li><span>Principles of Verification</span><span>p. 3</span></li>
+            <li><span>Verification Framework Overview</span><span>p. 4</span></li>
+            <li><span>Specialty Considerations</span><span>p. 4–5</span></li>
+            <li><span>Standards Maintenance</span><span>p. 5–6</span></li>
+            <li><span>Limitations</span><span>p. 6</span></li>
+            <li><span>Regulatory Reference Landscape</span><span>p. 7</span></li>
+          </ul>
+          <div class="doc-preview-footer">
+            Published on Zenodo &amp; OSF · CC BY 4.0 · Wenley Technologies, LLC
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <span class="footer-logo">BeautyJar</span>
+    <ul class="footer-links">
+      <li><a href="#">Find Providers</a></li>
+      <li><a href="#">How We Verify</a></li>
+      <li><a href="#">Get Featured</a></li>
+      <li><a href="#">The Edit</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+    <p class="footer-copy">© 2026 Wenley Technologies, LLC · BeautyJar is not a medical provider and does not offer clinical advice.</p>
+  </footer>
 
 </body>
 </html>
