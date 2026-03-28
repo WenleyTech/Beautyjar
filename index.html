@@ -1,0 +1,1192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="BeautyJar is a verification-first women's care network for GLP-1 weight management, hormone therapy, medical aesthetics, and wellness providers." />
+  <meta property="og:title" content="BeautyJar – Verified Women's Care Network" />
+  <meta property="og:description" content="Find verified providers for GLP-1 weight management, hormone therapy, medical aesthetics, and wellness." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://beautyjar.com/og-image.jpg" />
+  <link rel="icon" type="image/png" href="favicon.png" />
+  <title>BeautyJar – Verified Women's Care Network</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --white: #ffffff;
+      --soft: #f7f5f4;
+      --soft-2: #fbfaf9;
+      --charcoal: #171717;
+      --mid: #2c2a28;
+      --muted: #4a4744;
+      --border: #e9e4df;
+      --green: #1e2822;
+      --accent: #8c244d;
+      --accent-soft: #f4e4ea;
+      --shadow: 0 18px 40px rgba(23,23,23,.06);
+      --max: 1320px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Jost', sans-serif;
+      background: var(--white);
+      color: var(--charcoal);
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.5;
+    }
+
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+
+    .container { width: min(var(--max), calc(100% - 40px)); margin: 0 auto; }
+
+    /* ─── TOP BAR ─── */
+    .top-bar {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(255,255,255,.96);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .top-inner {
+      min-height: 78px;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .logo-wrap { text-align: center; }
+    .logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(28px, 4vw, 46px);
+      letter-spacing: .16em;
+      font-weight: 700;
+      text-transform: uppercase;
+      line-height: 1;
+    }
+    .logo-tag {
+      margin-top: 6px;
+      font-size: 10px;
+      letter-spacing: .28em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 500;
+    }
+
+    .menu-left, .menu-right { display: flex; align-items: center; gap: 14px; }
+    .menu-right { justify-content: flex-end; }
+
+    .hamburger {
+      width: 42px; height: 42px;
+      border: 1px solid var(--border);
+      background: var(--white);
+      display: inline-flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      padding: 0 11px;
+      border-radius: 999px;
+      cursor: pointer;
+    }
+    .hamburger span { height: 1.7px; background: var(--charcoal); display: block; }
+
+    .btn-dark, .btn-light {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 0 24px;
+      border-radius: 0;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      transition: .2s ease;
+      white-space: nowrap;
+    }
+    .btn-dark {
+      background: var(--green);
+      color: #fff;
+      border: 1px solid var(--green);
+    }
+    .btn-dark:hover { opacity: .9; }
+    .btn-light {
+      background: transparent;
+      color: var(--charcoal);
+      border: 1px solid #bfb6b0;
+    }
+    .btn-light:hover { border-color: var(--charcoal); }
+
+    .link-login {
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: .06em;
+      color: var(--mid);
+      transition: color .2s;
+    }
+    .link-login:hover { color: var(--charcoal); }
+
+    /* ─── PRIMARY NAV ─── */
+    .primary-nav {
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      background: var(--soft-2);
+    }
+
+    .primary-nav ul {
+      list-style: none;
+      min-height: 74px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: clamp(20px, 2.5vw, 42px);
+      flex-wrap: wrap;
+      padding: 0 14px;
+    }
+    .primary-nav a {
+      font-size: clamp(13px, 1.2vw, 15px);
+      font-weight: 500;
+      letter-spacing: .08em;
+      color: var(--charcoal);
+      position: relative;
+    }
+    .primary-nav a::after {
+      content: '';
+      position: absolute;
+      left: 0; right: 0; bottom: -8px;
+      height: 2px;
+      background: var(--accent);
+      transform: scaleX(0);
+      transform-origin: center;
+      transition: transform .22s ease;
+    }
+    .primary-nav a:hover::after { transform: scaleX(1); }
+
+    /* ─── HERO ─── */
+    .hero {
+      background:
+        linear-gradient(rgba(255,255,255,.94), rgba(255,255,255,.96)),
+        radial-gradient(circle at top left, rgba(140,36,77,.05), transparent 30%),
+        radial-gradient(circle at bottom right, rgba(30,40,34,.035), transparent 34%);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hero-inner {
+      min-height: 580px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 80px 0 76px;
+    }
+
+    .hero-copy { max-width: 920px; }
+    .eyebrow {
+      font-size: 11px;
+      letter-spacing: .3em;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: 22px;
+    }
+    .hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(42px, 5.5vw, 72px);
+      line-height: .98;
+      font-weight: 600;
+      letter-spacing: -.02em;
+      max-width: 980px;
+      margin: 0 auto 24px;
+    }
+    .hero-sub {
+      max-width: 740px;
+      margin: 0 auto;
+      font-size: clamp(18px, 2vw, 23px);
+      line-height: 1.7;
+      color: var(--mid);
+      font-weight: 400;
+    }
+    .hero-actions {
+      margin-top: 34px;
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    /* ─── MARKET CONTEXT STRIP ─── */
+    .market-strip {
+      background: var(--soft);
+      border-bottom: 1px solid var(--border);
+      padding: 36px 0;
+    }
+    .market-row {
+      display: flex;
+      justify-content: center;
+      gap: clamp(28px, 5vw, 72px);
+      flex-wrap: wrap;
+    }
+    .market-stat { text-align: center; }
+    .market-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(32px, 4vw, 48px);
+      font-weight: 600;
+      line-height: 1;
+      color: var(--charcoal);
+      margin-bottom: 6px;
+    }
+    .market-label {
+      font-size: 11px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 500;
+    }
+
+    /* ─── SECTION DEFAULTS ─── */
+    .section { padding: 86px 0; }
+    .section-head { text-align: center; max-width: 860px; margin: 0 auto 44px; }
+    .section-head h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(34px, 4vw, 54px);
+      line-height: 1.04;
+      font-weight: 600;
+      margin-bottom: 14px;
+    }
+    .section-head p {
+      font-size: 18px;
+      line-height: 1.8;
+      color: var(--mid);
+      font-weight: 400;
+    }
+
+    /* ─── HOW IT WORKS ─── */
+    .how-it-works {
+      background: #141414;
+      color: #fff;
+      border-bottom: 1px solid #232323;
+      padding: 92px 0;
+    }
+    .how-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 56px;
+      align-items: start;
+    }
+    .how-intro h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(38px, 5vw, 64px);
+      line-height: .98;
+      font-weight: 600;
+      margin-bottom: 18px;
+    }
+    .how-intro p {
+      font-size: 18px;
+      line-height: 1.9;
+      color: rgba(255,255,255,.72);
+      max-width: 500px;
+      font-weight: 400;
+    }
+    .how-steps { display: grid; gap: 20px; }
+    .how-step {
+      display: grid;
+      grid-template-columns: 70px 1fr;
+      gap: 18px;
+      padding: 24px 0;
+      border-top: 1px solid rgba(255,255,255,.12);
+    }
+    .how-step:last-child { border-bottom: 1px solid rgba(255,255,255,.12); }
+    .step-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 44px;
+      font-weight: 700;
+      color: rgba(255,255,255,.18);
+      line-height: .9;
+    }
+    .step-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(28px, 3vw, 38px);
+      line-height: 1.05;
+      margin-bottom: 10px;
+      font-weight: 600;
+    }
+    .step-desc {
+      font-size: 17px;
+      line-height: 1.85;
+      color: rgba(255,255,255,.68);
+      font-weight: 400;
+      max-width: 620px;
+    }
+
+    /* ─── CATEGORIES ─── */
+    .categories {
+      background: var(--soft-2);
+      border-bottom: 1px solid var(--border);
+    }
+    .categories-actions { text-align: center; margin-bottom: 36px; }
+    .category-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 8px;
+    }
+    .category-card {
+      position: relative;
+      min-height: 420px;
+      overflow: hidden;
+      background: #ddd;
+      box-shadow: var(--shadow);
+    }
+    .category-card img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform .4s ease;
+    }
+    .category-card:hover img { transform: scale(1.03); }
+    .category-card::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(20,20,20,.78), rgba(20,20,20,.08) 54%, rgba(20,20,20,0));
+    }
+    .cat-label {
+      position: absolute;
+      left: 22px; right: 22px; bottom: 20px;
+      z-index: 2;
+      color: #fff;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(28px, 2.2vw, 38px);
+      line-height: 1.02;
+      font-weight: 500;
+    }
+
+    /* ─── WHY PROVIDERS JOIN (NEW) ─── */
+    .why-providers {
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      padding: 96px 0;
+    }
+    .why-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: start;
+    }
+    .why-left h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(34px, 4.5vw, 56px);
+      line-height: 1.02;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+    .why-left > p {
+      font-size: 18px;
+      line-height: 1.85;
+      color: var(--mid);
+      font-weight: 400;
+      max-width: 520px;
+      margin-bottom: 32px;
+    }
+    .why-point {
+      padding: 24px 0;
+      border-top: 1px solid var(--border);
+    }
+    .why-point:last-child { border-bottom: 1px solid var(--border); }
+    .why-point-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 26px;
+      font-weight: 600;
+      line-height: 1.15;
+      margin-bottom: 8px;
+    }
+    .why-point-desc {
+      font-size: 15px;
+      line-height: 1.85;
+      color: var(--mid);
+      font-weight: 400;
+      max-width: 480px;
+    }
+
+    .why-right {
+      background: var(--soft);
+      border: 1px solid var(--border);
+      padding: 44px 40px;
+    }
+    .why-right-eyebrow {
+      font-size: 10px;
+      letter-spacing: .24em;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+    .profile-preview-mock {
+      background: var(--white);
+      border: 1px solid var(--border);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+    .profile-mock-photo {
+      height: 260px;
+      background: linear-gradient(145deg, #e8e6e2, #d8d4cf);
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .profile-mock-photo-icon {
+      width: 72px; height: 72px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .profile-mock-photo-icon svg { width: 32px; height: 32px; opacity: .35; }
+    .mock-ribbon {
+      position: absolute;
+      top: 0; left: 0;
+      background: var(--charcoal);
+      color: #fff;
+      font-size: 9px;
+      font-weight: 500;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      padding: 8px 16px;
+      line-height: 1;
+    }
+    .profile-mock-info { padding: 24px; }
+    .mock-badges { display: flex; gap: 8px; margin-bottom: 14px; }
+    .mock-badge {
+      font-size: 9px;
+      font-weight: 500;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border: 1px solid #ccc;
+      color: var(--mid);
+    }
+    .mock-badge.verified {
+      background: var(--accent-soft);
+      border-color: #ead0da;
+      color: var(--accent);
+    }
+    .mock-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 28px;
+      font-weight: 600;
+      line-height: 1.1;
+      margin-bottom: 6px;
+    }
+    .mock-role { font-size: 13px; color: var(--muted); margin-bottom: 4px; }
+    .mock-location {
+      font-size: 11px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 500;
+      margin-bottom: 16px;
+    }
+    .mock-cred-row {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      color: #6b7c63;
+      font-weight: 500;
+      padding: 8px 0;
+      border-top: 1px solid var(--border);
+    }
+    .mock-cred-row svg { width: 13px; height: 13px; flex-shrink: 0; }
+    .mock-cta {
+      display: block;
+      text-align: center;
+      background: var(--green);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      padding: 14px;
+      margin-top: 18px;
+    }
+
+    .profile-preview-caption {
+      margin-top: 18px;
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.7;
+      text-align: center;
+    }
+
+    /* ─── FOUNDING PROVIDERS SECTION (NEW) ─── */
+    .founding {
+      background: var(--green);
+      color: #fff;
+      padding: 96px 0;
+      border-bottom: 1px solid #2a352e;
+    }
+    .founding-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+    .founding-left h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(36px, 4.5vw, 58px);
+      line-height: 1;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+    .founding-left > p {
+      font-size: 18px;
+      line-height: 1.85;
+      color: rgba(255,255,255,.72);
+      font-weight: 400;
+      max-width: 520px;
+      margin-bottom: 32px;
+    }
+    .founding-detail {
+      display: grid;
+      grid-template-columns: 56px 1fr;
+      gap: 16px;
+      padding: 20px 0;
+      border-top: 1px solid rgba(255,255,255,.14);
+      align-items: start;
+    }
+    .founding-detail:last-of-type { border-bottom: 1px solid rgba(255,255,255,.14); }
+    .founding-icon {
+      width: 42px; height: 42px;
+      border: 1px solid rgba(255,255,255,.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 2px;
+    }
+    .founding-icon svg { width: 18px; height: 18px; opacity: .6; }
+    .founding-detail-title {
+      font-size: 15px;
+      font-weight: 500;
+      margin-bottom: 4px;
+    }
+    .founding-detail-desc {
+      font-size: 14px;
+      line-height: 1.75;
+      color: rgba(255,255,255,.6);
+      font-weight: 400;
+    }
+    .founding-right {
+      text-align: center;
+    }
+    .founding-markets-label {
+      font-size: 10px;
+      letter-spacing: .28em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.4);
+      font-weight: 500;
+      margin-bottom: 28px;
+    }
+    .founding-markets-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+    .market-pill {
+      padding: 18px 16px;
+      border: 1px solid rgba(255,255,255,.12);
+      font-size: 14px;
+      font-weight: 400;
+      color: rgba(255,255,255,.82);
+      text-align: center;
+      transition: border-color .2s;
+    }
+    .market-pill:hover { border-color: rgba(255,255,255,.3); }
+    .market-pill .city {
+      display: block;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px;
+      font-weight: 600;
+      margin-bottom: 2px;
+      color: #fff;
+    }
+    .market-pill .region {
+      font-size: 11px;
+      letter-spacing: .06em;
+      color: rgba(255,255,255,.45);
+    }
+    .founding-cta-row {
+      margin-top: 36px;
+      display: flex;
+      justify-content: center;
+    }
+    .btn-white {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 0 28px;
+      background: #fff;
+      color: var(--green);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      border: none;
+      transition: opacity .2s;
+    }
+    .btn-white:hover { opacity: .9; }
+
+    /* ─── TRUST STRIP ─── */
+    .trust-strip {
+      background: var(--soft);
+      border-bottom: 1px solid var(--border);
+    }
+    .trust-row {
+      padding: 30px 0;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 22px;
+      align-items: center;
+    }
+    .trust-title {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      white-space: nowrap;
+    }
+    .trust-items { display: flex; flex-wrap: wrap; gap: 12px; }
+    .trust-items span {
+      min-height: 36px;
+      display: inline-flex;
+      align-items: center;
+      padding: 0 14px;
+      border: 1px solid var(--border);
+      background: var(--white);
+      font-size: 12px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--mid);
+      font-weight: 600;
+    }
+    .trust-footnote {
+      text-align: center;
+      padding: 0 0 20px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .trust-footnote a {
+      color: var(--accent);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    /* ─── PROVIDER VALUE STRIP (NEW) ─── */
+    .value-strip {
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      padding: 80px 0;
+    }
+    .value-strip .section-head { margin-bottom: 56px; }
+    .value-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+    }
+    .value-item {
+      padding: 40px 36px;
+      border: 1px solid var(--border);
+      margin-right: -1px;
+      margin-bottom: -1px;
+    }
+    .value-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 56px;
+      font-weight: 700;
+      line-height: .9;
+      color: var(--border);
+      margin-bottom: 18px;
+    }
+    .value-item-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 24px;
+      font-weight: 600;
+      line-height: 1.15;
+      margin-bottom: 12px;
+    }
+    .value-item-desc {
+      font-size: 15px;
+      line-height: 1.85;
+      color: var(--mid);
+      font-weight: 400;
+    }
+
+    /* ─── CTA BAND ─── */
+    .cta-band {
+      background: var(--white);
+      padding: 96px 0 108px;
+      text-align: center;
+    }
+    .cta-band h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(36px, 4vw, 58px);
+      line-height: 1.02;
+      font-weight: 600;
+      margin-bottom: 14px;
+    }
+    .cta-band p {
+      max-width: 700px;
+      margin: 0 auto;
+      font-size: 18px;
+      line-height: 1.85;
+      color: var(--mid);
+      font-weight: 400;
+    }
+    .cta-band .hero-actions { margin-top: 30px; }
+
+    /* ─── FOOTER ─── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 38px 0 44px;
+      background: var(--soft-2);
+      text-align: center;
+    }
+    .footer-copy {
+      font-size: 12px;
+      color: var(--muted);
+      letter-spacing: .06em;
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 1120px) {
+      .category-grid { grid-template-columns: repeat(2, 1fr); }
+      .how-grid { grid-template-columns: 1fr; }
+      .how-intro p { max-width: none; }
+      .why-grid { grid-template-columns: 1fr; }
+      .why-right { max-width: 480px; }
+      .founding-inner { grid-template-columns: 1fr; }
+      .founding-right { max-width: 500px; }
+      .value-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 860px) {
+      .top-inner {
+        grid-template-columns: auto 1fr auto;
+        min-height: 72px;
+      }
+      .logo-wrap { text-align: center; }
+      .logo { font-size: 30px; }
+      .logo-tag { display: none; }
+      .link-login { display: none; }
+      .primary-nav ul {
+        justify-content: flex-start;
+        overflow-x: auto;
+        flex-wrap: nowrap;
+        min-height: 58px;
+        padding: 0 18px;
+      }
+      .primary-nav ul::-webkit-scrollbar { display: none; }
+      .primary-nav { scrollbar-width: none; }
+      .hero-inner { min-height: auto; padding: 72px 0 74px; }
+      .section, .how-it-works { padding: 70px 0; }
+      .category-grid { grid-template-columns: 1fr; }
+      .category-card { min-height: 340px; }
+      .trust-row { grid-template-columns: 1fr; }
+      .btn-dark, .btn-light { min-height: 46px; padding: 0 18px; }
+      .btn-dark.get-featured { padding: 0 16px; }
+      .menu-right .btn-dark { font-size: 11px; letter-spacing: .08em; }
+      .founding { padding: 72px 0; }
+      .founding-markets-grid { grid-template-columns: 1fr 1fr; }
+      .why-providers { padding: 72px 0; }
+      .value-strip { padding: 60px 0; }
+      .value-item { padding: 28px 24px; }
+    }
+
+    @media (max-width: 560px) {
+      .container { width: min(var(--max), calc(100% - 28px)); }
+      .hero h1 { font-size: 42px; }
+      .hero-sub { font-size: 18px; }
+      .step-title { font-size: 28px; }
+      .step-desc, .section-head p, .cta-band p { font-size: 16px; }
+      .how-step { grid-template-columns: 48px 1fr; gap: 14px; }
+      .step-num { font-size: 34px; }
+      .founding-markets-grid { grid-template-columns: 1fr; }
+      .market-row { gap: 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ═══ HEADER ═══ -->
+  <header class="top-bar">
+    <div class="container top-inner">
+      <div class="menu-left">
+        <button class="hamburger" aria-label="Open menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+
+      <div class="logo-wrap">
+        <a href="index.html" class="logo">BeautyJar</a>
+        <div class="logo-tag">Verified Women's Care Network</div>
+      </div>
+
+      <div class="menu-right">
+        <a href="#" class="link-login">Provider Login</a>
+        <a href="founding-providers.html" class="btn-dark get-featured">Get Featured</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ═══ NAV ═══ -->
+  <nav class="primary-nav">
+    <div class="container">
+      <ul>
+        <li><a href="providers.html">Find Providers</a></li>
+        <li><a href="how-we-verify.html">How We Verify</a></li>
+        <li><a href="verified-badge.html">Verified Badge</a></li>
+        <li><a href="provider-spotlight.html">Provider Spotlight</a></li>
+        <li><a href="the-edit.html">The Edit</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ═══ HERO ═══ -->
+  <section class="hero">
+    <div class="container hero-inner">
+      <div class="hero-copy">
+        <div class="eyebrow">Verification-first provider network</div>
+        <h1>Where Verified Providers Build Patient Trust</h1>
+        <p class="hero-sub">GLP-1 weight management, hormone therapy, medical aesthetics, and wellness — verified for license, identity, and practice. Patients find you here because they trust what verification means.</p>
+        <div class="hero-actions">
+          <a href="providers.html" class="btn-dark">Find a Provider</a>
+          <a href="founding-providers.html" class="btn-dark" style="background:var(--accent);border-color:var(--accent);">Apply to Get Featured</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ MARKET CONTEXT ═══ -->
+  <div class="market-strip">
+    <div class="container">
+      <div class="market-row">
+        <div class="market-stat">
+          <div class="market-num">$130B</div>
+          <div class="market-label">GLP-1 Market by 2030</div>
+        </div>
+        <div class="market-stat">
+          <div class="market-num">$78B</div>
+          <div class="market-label">Medical Aesthetics by 2033</div>
+        </div>
+        <div class="market-stat">
+          <div class="market-num">$24B</div>
+          <div class="market-label">Women's Hormone Wellness by 2030</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ HOW IT WORKS ═══ -->
+  <section class="how-it-works">
+    <div class="container how-grid">
+      <div class="how-intro">
+        <div class="eyebrow" style="color: rgba(255,255,255,.56); margin-bottom: 18px;">How It Works</div>
+        <h2>Patients Search. We Verify. You Grow.</h2>
+        <p>BeautyJar connects qualified patients with verified providers. We handle the trust layer — you handle the medicine.</p>
+      </div>
+
+      <div class="how-steps">
+        <div class="how-step">
+          <div class="step-num">01</div>
+          <div>
+            <div class="step-title">Patients search by need</div>
+            <div class="step-desc">Women looking for GLP-1 providers, hormone specialists, or aesthetic practitioners search BeautyJar by city, treatment, or specialty.</div>
+          </div>
+        </div>
+        <div class="how-step">
+          <div class="step-num">02</div>
+          <div>
+            <div class="step-title">We verify before they see you</div>
+            <div class="step-desc">Every provider is reviewed for license status, identity, and practice legitimacy before earning visibility. Patients see only verified profiles.</div>
+          </div>
+        </div>
+        <div class="how-step">
+          <div class="step-num">03</div>
+          <div>
+            <div class="step-title">They book directly with you</div>
+            <div class="step-desc">No middleman. No lead fees. No commissions. Patients connect with your clinic or practice directly. BeautyJar is the bridge, not the tollbooth.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ EXPLORE BY TREATMENT ═══ -->
+  <section class="section categories">
+    <div class="container">
+      <div class="section-head">
+        <div class="eyebrow">Explore by Treatment</div>
+        <h2>The categories patients are searching for right now.</h2>
+        <p>These are the fastest-growing areas in medical wellness. BeautyJar organizes verified providers by the treatments patients actually seek.</p>
+      </div>
+
+      <div class="categories-actions">
+        <a href="providers.html" class="btn-light">See All Treatments</a>
+      </div>
+
+      <div class="category-grid">
+        <a class="category-card" href="providers.html?category=glp1">
+          <img src="GLP-1.jpg" alt="GLP-1 weight loss category" />
+          <div class="cat-label">GLP-1 Weight Loss</div>
+        </a>
+        <a class="category-card" href="providers.html?category=hormones">
+          <img src="HRT.jpg" alt="Hormone balance category" />
+          <div class="cat-label">Hormone Balance</div>
+        </a>
+        <a class="category-card" href="providers.html?category=metabolic-health">
+          <img src="Female doctor.png" alt="Metabolic health category" />
+          <div class="cat-label">Metabolic Health</div>
+        </a>
+        <a class="category-card" href="providers.html?category=skin-aesthetics">
+          <img src="Asian Skin.png" alt="Skin and aesthetics category" />
+          <div class="cat-label">Skin &amp; Aesthetics</div>
+        </a>
+        <a class="category-card" href="providers.html?category=wellness">
+          <img src="Wellness-IV.png" alt="Wellness category" />
+          <div class="cat-label">Wellness</div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ WHY PROVIDERS JOIN ═══ -->
+  <section class="why-providers">
+    <div class="container why-grid">
+      <div class="why-left">
+        <div class="eyebrow">For Providers</div>
+        <h2>Credentialed. Verified. Presented at the highest level.</h2>
+        <p>BeautyJar features providers through a structured profile designed to highlight your credentials, specialties, and practice — with independent verification that adds a layer of trust patients can see immediately.</p>
+
+        <div class="why-point">
+          <div class="why-point-title">A profile designed to reflect your caliber</div>
+          <div class="why-point-desc">Your BeautyJar profile presents your credentials, services, and practice in a clean, structured format — organized for clarity and built to reflect the standard of care you deliver.</div>
+        </div>
+        <div class="why-point">
+          <div class="why-point-title">Verification as a credential</div>
+          <div class="why-point-desc">"I'm a BeautyJar Verified provider" becomes something you display on your own website, in your waiting room, and in your marketing. It signals trust before a patient ever walks in.</div>
+        </div>
+        <div class="why-point">
+          <div class="why-point-title">Independent, not self-reported</div>
+          <div class="why-point-desc">BeautyJar verifies license status, identity, and practice legitimacy against official regulatory sources. What's on your profile has been confirmed — not just claimed.</div>
+        </div>
+        <div class="why-point">
+          <div class="why-point-title">No lead fees. No commissions. Ever.</div>
+          <div class="why-point-desc">Simple monthly membership. Patients book directly with you. We don't take a cut of your revenue or charge per appointment. The economics are transparent.</div>
+        </div>
+      </div>
+
+      <div class="why-right">
+        <div class="why-right-eyebrow">Profile Preview</div>
+        <div class="profile-preview-mock">
+          <div class="profile-mock-photo">
+            <div class="mock-ribbon">Founding Provider</div>
+            <div class="profile-mock-photo-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            </div>
+          </div>
+          <div class="profile-mock-info">
+            <div class="mock-badges">
+              <span class="mock-badge verified">License Verified</span>
+              <span class="mock-badge">Identity Confirmed</span>
+            </div>
+            <div class="mock-name">Your Name Here</div>
+            <div class="mock-role">Your Specialty &amp; Practice</div>
+            <div class="mock-location">Your City, Your Country</div>
+            <div class="mock-cred-row">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+              Medical License — Verified by BeautyJar
+            </div>
+            <div class="mock-cred-row">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+              Board Certification — Verified by BeautyJar
+            </div>
+            <div class="mock-cta">View Full Profile</div>
+          </div>
+        </div>
+        <p class="profile-preview-caption">This is what your BeautyJar profile looks like.<br><a href="sample-provider-listing-b.html" style="color:var(--accent);text-decoration:underline;text-underline-offset:3px;">See a full sample profile →</a></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FOUNDING 50 ═══ -->
+  <section class="founding">
+    <div class="container founding-inner">
+      <div class="founding-left">
+        <div class="eyebrow" style="color:rgba(255,255,255,.45);">By Invitation</div>
+        <h2>The Founding 50</h2>
+        <p>BeautyJar is selecting 50 elite providers across strategic markets worldwide to anchor the network at launch. Founding Providers receive a lifetime complimentary listing and permanent Founding Provider designation.</p>
+
+        <div class="founding-detail">
+          <div class="founding-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <div>
+            <div class="founding-detail-title">Lifetime free membership</div>
+            <div class="founding-detail-desc">No subscription fees, ever. Your verified profile remains active as long as your credentials are current.</div>
+          </div>
+        </div>
+        <div class="founding-detail">
+          <div class="founding-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <div>
+            <div class="founding-detail-title">Permanent Founding Provider status</div>
+            <div class="founding-detail-desc">A distinction that will never be available again. Displayed on your profile as the network grows to hundreds of providers.</div>
+          </div>
+        </div>
+        <div class="founding-detail">
+          <div class="founding-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          </div>
+          <div>
+            <div class="founding-detail-title">Shape the network from day one</div>
+            <div class="founding-detail-desc">Your presence sets the standard. Founding Providers have a voice in how BeautyJar evolves — from profile features to verification criteria.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="founding-right">
+        <div class="founding-markets-label">Founding Markets</div>
+        <div class="founding-markets-grid">
+          <div class="market-pill">
+            <span class="city">Seoul</span>
+            <span class="region">South Korea</span>
+          </div>
+          <div class="market-pill">
+            <span class="city">Beverly Hills</span>
+            <span class="region">California</span>
+          </div>
+          <div class="market-pill">
+            <span class="city">Bogotá</span>
+            <span class="region">Colombia</span>
+          </div>
+          <div class="market-pill">
+            <span class="city">Mexico City</span>
+            <span class="region">Mexico</span>
+          </div>
+          <div class="market-pill">
+            <span class="city">New York</span>
+            <span class="region">New York</span>
+          </div>
+          <div class="market-pill">
+            <span class="city">London</span>
+            <span class="region">United Kingdom</span>
+          </div>
+          <div class="market-pill">
+            <span class="city">Miami</span>
+            <span class="region">Florida</span>
+          </div>
+          <div class="market-pill">
+            <span class="city">Singapore</span>
+            <span class="region">Singapore</span>
+          </div>
+        </div>
+        <div class="founding-cta-row">
+          <a href="founding-providers.html" class="btn-white">Apply as a Founding Provider</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ WHAT PROVIDERS GET ═══ -->
+  <section class="value-strip">
+    <div class="container">
+      <div class="section-head">
+        <div class="eyebrow">What Providers Get</div>
+        <h2>A verified presence built around trust.</h2>
+        <p>BeautyJar gives providers a structured, independently verified profile — and a growing network designed to make verification the standard in medical wellness.</p>
+      </div>
+
+      <div class="value-grid">
+        <div class="value-item">
+          <div class="value-num">01</div>
+          <div class="value-item-title">Structured provider profile</div>
+          <div class="value-item-desc">Your credentials, specialties, services, and practice details presented in a clean, professional format — designed for clarity and built around what patients look for when evaluating a provider.</div>
+        </div>
+        <div class="value-item">
+          <div class="value-num">02</div>
+          <div class="value-item-title">Independent verification</div>
+          <div class="value-item-desc">License status, identity, and practice legitimacy confirmed against official medical boards and regulatory sources. The BeautyJar Verified badge means something because the process behind it is real.</div>
+        </div>
+        <div class="value-item">
+          <div class="value-num">03</div>
+          <div class="value-item-title">Education-first editorial</div>
+          <div class="value-item-desc">BeautyJar publishes articles, guides, and content on GLP-1, hormone therapy, aesthetics, and wellness — building awareness around the categories where verified providers practice.</div>
+        </div>
+        <div class="value-item">
+          <div class="value-num">04</div>
+          <div class="value-item-title">A credential you can display</div>
+          <div class="value-item-desc">The BeautyJar Verified badge is designed for your website, waiting room, and marketing materials. It tells prospective patients you've been independently verified before they ever contact you.</div>
+        </div>
+        <div class="value-item">
+          <div class="value-num">05</div>
+          <div class="value-item-title">Provider Spotlight features</div>
+          <div class="value-item-desc">Select providers are featured through editorial spotlights — in-depth profiles that highlight your approach, expertise, and the work that sets your practice apart.</div>
+        </div>
+        <div class="value-item">
+          <div class="value-num">06</div>
+          <div class="value-item-title">Direct booking, zero commissions</div>
+          <div class="value-item-desc">Patients contact your practice directly. No lead fees, no per-appointment charges, no revenue share. A flat monthly subscription is the only cost.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ TRUST STRIP ═══ -->
+  <section class="trust-strip">
+    <div class="container trust-row">
+      <div class="trust-title">Verification Sources</div>
+      <div class="trust-items">
+        <span>FSMB</span>
+        <span>NPI Registry</span>
+        <span>ABMS</span>
+        <span>GMC</span>
+        <span>AHPRA</span>
+        <span>SMC</span>
+        <span>MCHK</span>
+      </div>
+    </div>
+    <div class="container trust-footnote">
+      Providers are verified against official medical boards and regulatory bodies worldwide. <a href="beautyjar-verification-framework-v1-1-jan-2026.pdf" target="_blank">Read our published Verification Framework →</a>
+    </div>
+  </section>
+
+  <!-- ═══ CTA ═══ -->
+  <section class="cta-band">
+    <div class="container">
+      <div class="eyebrow">Start here</div>
+      <h2>Verification is the new standard. Be part of it.</h2>
+      <p>Whether you're a patient looking for a provider you can trust, or a provider who believes credentials should be confirmed — not just claimed — BeautyJar was built for you.</p>
+      <div class="hero-actions">
+        <a href="providers.html" class="btn-dark">Find a Provider</a>
+        <a href="founding-providers.html" class="btn-dark" style="background:var(--accent);border-color:var(--accent);">Apply to Get Featured</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FOOTER ═══ -->
+  <footer>
+    <div class="container footer-copy">BeautyJar © 2026 · Verified Women's Care Network · Wenley Technologies, LLC</div>
+  </footer>
+
+</body>
+</html>
