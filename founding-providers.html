@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Get Featured – BeautyJar Founding Provider Program</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --white: #ffffff;
+      --soft: #f7f5f4;
+      --soft-2: #fbfaf9;
+      --charcoal: #171717;
+      --mid: #2c2a28;
+      --muted: #4a4744;
+      --border: #e9e4df;
+      --green: #1e2822;
+      --accent: #8c244d;
+      --accent-soft: #f4e4ea;
+      --sage: #6b7c63;
+      --sage-light: #eef1ec;
+      --shadow: 0 18px 40px rgba(23,23,23,.06);
+      --max: 860px;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Jost', sans-serif;
+      background: var(--white);
+      color: var(--charcoal);
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.5;
+    }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+
+    .container { width: min(var(--max), calc(100% - 40px)); margin: 0 auto; }
+
+    /* ─── TOP BAR ─── */
+    .top-bar {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(255,255,255,.96);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+    }
+    .top-inner {
+      min-height: 78px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+    .logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 24px;
+      letter-spacing: .18em;
+      font-weight: 700;
+      text-transform: uppercase;
+      line-height: 1;
+    }
+    .top-links { display: flex; align-items: center; gap: 18px; }
+    .link-plain {
+      font-size: 13px;
+      letter-spacing: .04em;
+      color: var(--mid);
+      font-weight: 500;
+      transition: color .2s;
+    }
+    .link-plain:hover { color: var(--charcoal); }
+
+    /* ─── HERO ─── */
+    .hero {
+      background:
+        linear-gradient(rgba(255,255,255,.92), rgba(255,255,255,.96)),
+        radial-gradient(circle at top left, rgba(140,36,77,.06), transparent 30%),
+        radial-gradient(circle at bottom right, rgba(30,40,34,.04), transparent 34%);
+      border-bottom: 1px solid var(--border);
+      padding: 88px 0 80px;
+      text-align: center;
+    }
+    .eyebrow {
+      font-size: 11px;
+      letter-spacing: .3em;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: 22px;
+    }
+    .hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(38px, 5vw, 62px);
+      line-height: 1;
+      font-weight: 600;
+      letter-spacing: -.02em;
+      margin-bottom: 22px;
+    }
+    .hero-sub {
+      max-width: 640px;
+      margin: 0 auto;
+      font-size: clamp(17px, 2vw, 20px);
+      line-height: 1.75;
+      color: var(--charcoal);
+      font-weight: 400;
+    }
+
+    /* ─── WHAT YOU RECEIVE ─── */
+    .benefits {
+      padding: 72px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .benefits-head {
+      text-align: center;
+      margin-bottom: 44px;
+    }
+    .benefits-head h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(28px, 3.5vw, 42px);
+      font-weight: 600;
+      line-height: 1.08;
+      margin-bottom: 12px;
+    }
+    .benefits-head p {
+      font-size: 16px;
+      color: var(--mid);
+      font-weight: 400;
+      line-height: 1.8;
+      max-width: 560px;
+      margin: 0 auto;
+    }
+    .benefit-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+    }
+    .benefit-item {
+      padding: 32px 28px;
+      border: 1px solid var(--border);
+      margin-right: -1px;
+      margin-bottom: -1px;
+    }
+    .benefit-icon {
+      width: 36px; height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 16px;
+    }
+    .benefit-icon svg { width: 20px; height: 20px; color: var(--sage); }
+    .benefit-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px;
+      font-weight: 600;
+      line-height: 1.15;
+      margin-bottom: 8px;
+    }
+    .benefit-desc {
+      font-size: 14px;
+      line-height: 1.8;
+      color: var(--mid);
+      font-weight: 400;
+    }
+
+    /* ─── SAMPLE PROFILES GALLERY ─── */
+    .sample-banner {
+      background: var(--soft);
+      border-bottom: 1px solid var(--border);
+      padding: 56px 0;
+    }
+    .sample-banner .section-eyebrow {
+      font-size: 9.5px;
+      letter-spacing: .24em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 16px;
+      font-weight: 500;
+      text-align: center;
+    }
+    .sample-banner .section-heading {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(24px, 3.5vw, 34px);
+      font-weight: 600;
+      color: var(--charcoal);
+      text-align: center;
+      margin-bottom: 40px;
+      line-height: 1.2;
+    }
+    .profile-gallery {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    @media (max-width: 700px) {
+      .profile-gallery { grid-template-columns: 1fr; gap: 20px; }
+    }
+    .profile-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      overflow: hidden;
+      transition: box-shadow .25s ease, transform .25s ease;
+    }
+    .profile-card:hover {
+      box-shadow: var(--shadow);
+      transform: translateY(-3px);
+    }
+    .profile-card-img {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+      background: #e8e8e6;
+    }
+    .profile-card-body {
+      padding: 24px;
+    }
+    .profile-card-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px;
+      font-weight: 600;
+      color: var(--charcoal);
+      line-height: 1.2;
+      margin-bottom: 4px;
+    }
+    .profile-card-creds {
+      font-size: 12.5px;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+    .profile-card-practice {
+      font-size: 12.5px;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+    .profile-card-link {
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: .06em;
+      color: var(--accent);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+    .profile-card-link:hover { opacity: .7; }
+
+    /* ─── DIVIDER ─── */
+    .divider-section {
+      padding: 72px 0 16px;
+      text-align: center;
+    }
+    .divider-section h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(28px, 3.5vw, 42px);
+      font-weight: 600;
+      line-height: 1.08;
+      margin-bottom: 12px;
+    }
+    .divider-section p {
+      font-size: 16px;
+      color: var(--mid);
+      font-weight: 400;
+      line-height: 1.8;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* ─── INTAKE SECTION ─── */
+    .intake {
+      padding: 24px 0 88px;
+    }
+    .intake-intro {
+      text-align: center;
+      margin-bottom: 48px;
+      padding: 28px 32px;
+      background: var(--sage-light);
+      border: 1px solid #d4ddd0;
+    }
+    .intake-intro p {
+      font-size: 14px;
+      line-height: 1.8;
+      color: var(--mid);
+    }
+    .intake-intro strong { color: var(--charcoal); font-weight: 500; }
+
+    .intake-group {
+      margin-bottom: 40px;
+    }
+    .intake-group-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 20px;
+      padding-bottom: 14px;
+      border-bottom: 2px solid var(--charcoal);
+    }
+    .intake-group-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--border);
+      line-height: 1;
+    }
+    .intake-group-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 24px;
+      font-weight: 600;
+      line-height: 1.15;
+    }
+
+    .intake-fields {
+      display: grid;
+      gap: 0;
+    }
+    .intake-field {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 16px;
+      padding: 16px 0;
+      border-bottom: 1px solid var(--border);
+      align-items: start;
+    }
+    .intake-field:last-child { border-bottom: none; }
+    .field-label {
+      font-size: 11px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--mid);
+      font-weight: 600;
+      padding-top: 2px;
+    }
+    .field-detail {
+      font-size: 14px;
+      color: var(--charcoal);
+      line-height: 1.7;
+      font-weight: 400;
+    }
+    .field-detail .example {
+      display: block;
+      margin-top: 4px;
+      font-size: 12.5px;
+      color: var(--muted);
+      font-style: italic;
+    }
+    .field-required {
+      display: inline-block;
+      font-size: 9px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 600;
+      margin-left: 8px;
+      vertical-align: middle;
+    }
+
+    /* ─── CTA ─── */
+    .cta-section {
+      background: var(--green);
+      color: #fff;
+      padding: 72px 0;
+      text-align: center;
+    }
+    .cta-section h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(30px, 4vw, 48px);
+      font-weight: 600;
+      line-height: 1.05;
+      margin-bottom: 16px;
+    }
+    .cta-section p {
+      font-size: 17px;
+      line-height: 1.8;
+      color: rgba(255,255,255,.7);
+      font-weight: 400;
+      max-width: 540px;
+      margin: 0 auto 32px;
+    }
+    .cta-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+    .btn-white {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 50px;
+      padding: 0 30px;
+      background: #fff;
+      color: var(--green);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      border: none;
+      transition: opacity .2s;
+    }
+    .btn-white:hover { opacity: .9; }
+    .btn-outline-white {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 50px;
+      padding: 0 30px;
+      background: transparent;
+      color: #fff;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      border: 1px solid rgba(255,255,255,.3);
+      transition: border-color .2s;
+    }
+    .btn-outline-white:hover { border-color: rgba(255,255,255,.6); }
+
+    .cta-note {
+      margin-top: 24px;
+      font-size: 14px;
+      color: rgba(255,255,255,.85);
+      font-weight: 500;
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 38px 0 44px;
+      background: var(--soft-2);
+      text-align: center;
+    }
+    .footer-copy {
+      font-size: 12px;
+      color: var(--muted);
+      letter-spacing: .06em;
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 700px) {
+      .benefit-grid { grid-template-columns: 1fr; }
+      .intake-field {
+        grid-template-columns: 1fr;
+        gap: 4px;
+      }
+      .hero { padding: 64px 0 60px; }
+      .benefits { padding: 56px 0; }
+      .intake { padding: 24px 0 64px; }
+      .cta-section { padding: 56px 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ═══ HEADER ═══ -->
+  <header class="top-bar">
+    <div class="container top-inner">
+      <a href="index.html" class="logo">BeautyJar</a>
+      <div class="top-links">
+        <a href="index.html" class="link-plain">Home</a>
+        <a href="about.html" class="link-plain">About</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ═══ HERO — FOR THE DOCTOR ═══ -->
+  <section class="hero">
+    <div class="container">
+      <div class="eyebrow">Founding Provider Program</div>
+      <h1>You've Been Selected</h1>
+      <p class="hero-sub">BeautyJar is selecting 50 elite providers worldwide to anchor our verified women's care network at launch. As a Founding Provider, your credentials, expertise, and practice are featured at the highest level — at no cost, for life.</p>
+      <p style="font-size:17px;color:var(--charcoal);margin-top:18px;max-width:640px;margin-left:auto;margin-right:auto;line-height:1.75;font-weight:400;">BeautyJar is building the trust layer for modern medical wellness. Founding Providers are the ones who define what that standard looks like.</p>
+      <p style="font-size:14px;letter-spacing:.08em;color:var(--charcoal);margin-top:18px;font-weight:500;">Selection is limited to 50 founding providers globally. Once this cohort is complete, the program closes permanently.</p>
+    </div>
+  </section>
+
+  <!-- ═══ WHAT FOUNDING PROVIDERS RECEIVE ═══ -->
+  <section class="benefits">
+    <div class="container">
+      <div class="benefits-head">
+        <h2>What Founding Providers Receive</h2>
+        <p>A permanent distinction reserved for the providers who helped define the network from day one.</p>
+      </div>
+
+      <div class="benefit-grid">
+        <div class="benefit-item">
+          <div class="benefit-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <div class="benefit-title">Lifetime Verified Listing</div>
+          <div class="benefit-desc">Your profile remains active and verified for as long as your credentials are current. No subscription fees, ever.</div>
+        </div>
+        <div class="benefit-item">
+          <div class="benefit-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <div class="benefit-title">Permanent Founding Status</div>
+          <div class="benefit-desc">A "Founding Provider" designation displayed on your profile — a distinction that will never be offered again as the network grows.</div>
+        </div>
+        <div class="benefit-item">
+          <div class="benefit-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          </div>
+          <div class="benefit-title">Independent Verification</div>
+          <div class="benefit-desc">Your license, identity, and practice are verified against official regulatory sources using BeautyJar's documented verification framework. The BeautyJar Verified badge confirms what patients need to know.
+            <span class="example"><a href="how-we-verify.html" style="color:var(--accent);text-decoration:underline;text-underline-offset:3px;">View verification process →</a></span>
+          </div>
+        </div>
+        <div class="benefit-item">
+          <div class="benefit-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          </div>
+          <div class="benefit-title">Profile Designed for You</div>
+          <div class="benefit-desc">We build your BeautyJar profile — a structured, professional presentation of your credentials, services, and practice. You review and approve before it goes live.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ SAMPLE PROFILES GALLERY ═══ -->
+  <div class="sample-banner">
+    <div class="container">
+      <p class="section-eyebrow">Sample Profiles</p>
+      <h2 class="section-heading">See what a Founding Provider profile looks like</h2>
+      <div class="profile-gallery">
+
+        <a href="sample-provider-listing-b.html" class="profile-card">
+          <img class="profile-card-img" src="data:image/jpeg;base64,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" alt="Dr. Abby Sample" />
+          <div class="profile-card-body">
+            <div class="profile-card-name">Dr. Abby Sample</div>
+            <div class="profile-card-creds">MD, FAAD — Board-Certified Dermatologist</div>
+            <div class="profile-card-practice">Sample Dermatology & Aesthetics · Atlanta, Georgia</div>
+            <span class="profile-card-link">View profile →</span>
+          </div>
+        </a>
+
+        <a href="sample-provider-kenji-sato.html" class="profile-card">
+          <img class="profile-card-img" src="data:image/jpeg;base64,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" alt="Dr. Kenji Sato" />
+          <div class="profile-card-body">
+            <div class="profile-card-name">Dr. Kenji Sato</div>
+            <div class="profile-card-creds">MD, PhD — Regenerative Dermatology & Precision Aesthetics</div>
+            <div class="profile-card-practice">Sato Regenerative Institute · Omotesando, Tokyo</div>
+            <span class="profile-card-link">View profile →</span>
+          </div>
+        </a>
+
+        <a href="sample-provider-listing.html" class="profile-card">
+          <img class="profile-card-img" src="data:image/jpeg;base64,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" alt="Dr. Abby Sample" />
+          <div class="profile-card-body">
+            <div class="profile-card-name">Dr. Abby Sample</div>
+            <div class="profile-card-creds">MD, FAAD — Board-Certified Dermatologist</div>
+            <div class="profile-card-practice">Sample Dermatology & Aesthetics · Atlanta, Georgia</div>
+            <span class="profile-card-link">View profile →</span>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ TRANSITION — FOR THE OFFICE MANAGER ═══ -->
+  <section class="divider-section">
+    <div class="container">
+      <div class="eyebrow" style="margin-bottom:18px;">Onboarding</div>
+      <h2>What We Need to Build Your Profile</h2>
+      <p>The following information allows our team to create your verified BeautyJar profile. You'll review and approve the final version before it's published.</p>
+    </div>
+  </section>
+
+  <!-- ═══ INTAKE CHECKLIST ═══ -->
+  <section class="intake">
+    <div class="container">
+
+      <div class="intake-intro">
+        <p><strong>For office managers and practice staff:</strong> This checklist outlines everything we need. Most of it can be pulled from your existing website and marketing materials. If anything isn't readily available, just let us know — we'll work with what you have.</p>
+      </div>
+
+      <!-- Group 1: Provider Identity -->
+      <div class="intake-group">
+        <div class="intake-group-header">
+          <div class="intake-group-num">01</div>
+          <div class="intake-group-title">Provider Identity</div>
+        </div>
+        <div class="intake-fields">
+          <div class="intake-field">
+            <div class="field-label">Full Name &amp; Credentials <span class="field-required">Required</span></div>
+            <div class="field-detail">As it should appear on the profile, including all post-nominal letters.
+              <span class="example">e.g. Dr. Sarah Kim, MD, FAAD</span>
+            </div>
+          </div>
+          <div class="intake-field">
+            <div class="field-label">Practice Name <span class="field-required">Required</span></div>
+            <div class="field-detail">The name of the clinic, practice, or medical group.
+              <span class="example">e.g. Seoul Dermatology &amp; Aesthetics Clinic</span>
+            </div>
+          </div>
+          <div class="intake-field">
+            <div class="field-label">City &amp; Country <span class="field-required">Required</span></div>
+            <div class="field-detail">Primary practice location as it should appear on the profile.
+              <span class="example">e.g. Gangnam, Seoul, South Korea</span>
+            </div>
+          </div>
+          <div class="intake-field">
+            <div class="field-label">Professional Headshot <span class="field-required">Required</span></div>
+            <div class="field-detail">A high-resolution, professional photograph. Clean clinical or editorial aesthetic preferred. Minimum 800×1000px. Please send as a JPG or PNG attachment.
+              <span class="example">This photo will be the primary image on your profile.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Group 2: Credentials & Licensing -->
+      <div class="intake-group">
+        <div class="intake-group-header">
+          <div class="intake-group-num">02</div>
+          <div class="intake-group-title">Credentials &amp; Licensing</div>
+        </div>
+        <div class="intake-fields">
+          <div class="intake-field">
+            <div class="field-label">Medical License <span class="field-required">Required</span></div>
+            <div class="field-detail">License number and issuing board or regulatory body. This is verified independently by BeautyJar.
+              <span class="example">e.g. Georgia Composite Medical Board, License #MD-XXXXX</span>
+            </div>
+          </div>
+          <div class="intake-field">
+            <div class="field-label">Board Certifications <span class="field-required">Required</span></div>
+            <div class="field-detail">All current board certifications relevant to the services offered.
+              <span class="example">e.g. American Board of Dermatology; Korean Dermatological Association</span>
+            </div>
+          </div>
+          <div class="intake-field">
+            <div class="field-label">Fellowships</div>
+            <div class="field-detail">Any relevant fellowships or professional society memberships.
+              <span class="example">e.g. Fellow, American Academy of Dermatology (FAAD)</span>
+            </div>
+          </div>
+          <div class="intake-field">
+            <div class="field-label">Education &amp; Training <span class="field-required">Required</span></div>
+            <div class="field-detail">Medical school, residency, and any additional training programs.
+              <span class="example">e.g. MD — Yonsei University College of Medicine; Residency — Samsung Medical Center Dermatology</span>
+            </div>
+          </div>
+          <div class="intake-field">
+            <div class="field-label">Years in Practice</div>
+            <div class="field-detail">Approximate years of clinical practice.
+              <span class="example">e.g. 15+ years</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Group 3: Services & Specialties -->
+      <div class="intake-group">
+        <div class="intake-group-header">
+          <div class="intake-group-num">03</div>
+          <div class="intake-group-title">Services &amp; Specialties</div>
+        </div>
+        <div class="intake-fields">
+          <div class="intake-field">
+            <div class="field-label">Primary Specialty <span class="field-required">Required</span></div>
+            <div class="field-detail">The main area of focus as it should appear on the profile.
+              <span class="example">e.g. Medical Aesthetics &amp; Skin Rejuvenation; Obesity Medicine &amp; Metabolic Health</span>
+            </div>
+          </div>
+          <div class="intake-field">
+            <div class="field-label">Services Offered <span class="field-required">Required</span></div>
+            <div class="field-detail">A list of specific treatments and services. Include as many as relevant — we'll organize them by category on the profile.
+              <span class="example">e.g. Dermal Fillers, Neurotoxin Treatments, Laser Resurfacing, GLP-1 Weight Management, HRT, PRP &amp; Microneedling</span>
+            </div>
+          </div>
+          <div class="intake-field">
+            <div class="field-label">Telehealth Available?</div>
+            <div class="field-detail">Does the provider offer virtual consultations? If so, specify any geographic restrictions.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Group 4: About & Bio -->
+      <div class="intake-group">
+        <div class="intake-group-header">
+          <div class="intake-group-num">04</div>
+          <div class="intake-group-title">About &amp; Bio</div>
+        </div>
+        <div class="intake-fields">
+          <div class="intake-field">
+            <div class="field-label">Existing Bio or Website <span class="field-required">Required</span></div>
+            <div class="field-detail">A link to the provider's current website bio, or an existing bio document. We will write the BeautyJar profile bio in our editorial voice based on this — the provider reviews and approves before publishing.
+              <span class="example">e.g. https://yourpractice.com/about or attached document</span>
+            </div>
+          </div>
+          <div class="intake-field">
+            <div class="field-label">Anything to Emphasize?</div>
+            <div class="field-detail">Is there anything specific the provider would like highlighted? A clinical philosophy, a unique approach, an area of particular expertise?</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Group 5: Practice Details -->
+      <div class="intake-group">
+        <div class="intake-group-header">
+          <div class="intake-group-num">05</div>
+          <div class="intake-group-title">Practice Details</div>
+        </div>
+        <div class="intake-fields">
+          <div class="intake-field">
+            <div class="field-label">Accepting New Patients?</div>
+            <div class="field-detail">Is the practice currently accepting new patients? Any waitlist or scheduling notes?</div>
+          </div>
+          <div class="intake-field">
+            <div class="field-label">Consultation Fee</div>
+            <div class="field-detail">How the initial consultation works — deposit required, complimentary, applied toward treatment, etc.</div>
+          </div>
+          <div class="intake-field">
+            <div class="field-label">Payment Methods</div>
+            <div class="field-detail">Accepted payment types and any payment plan availability.</div>
+          </div>
+          <div class="intake-field">
+            <div class="field-label">Cancellation Policy</div>
+            <div class="field-detail">Notice period and any fees for cancellations or no-shows.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Group 6: Contact & Online Presence -->
+      <div class="intake-group">
+        <div class="intake-group-header">
+          <div class="intake-group-num">06</div>
+          <div class="intake-group-title">Contact &amp; Online Presence</div>
+        </div>
+        <div class="intake-fields">
+          <div class="intake-field">
+            <div class="field-label">Contact Email <span class="field-required">Required</span></div>
+            <div class="field-detail">The email address that should appear on the BeautyJar profile for patient inquiries.
+              <span class="example">e.g. <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="bbd2d5ddd4fbc2d4cec9cbc9dad8cfd2d8de95d8d4d6">[email&#160;protected]</a></span>
+            </div>
+          </div>
+          <div class="intake-field">
+            <div class="field-label">Website</div>
+            <div class="field-detail">Full URL of the practice website.</div>
+          </div>
+          <div class="intake-field">
+            <div class="field-label">Instagram / Social</div>
+            <div class="field-detail">Primary social media handle(s) to display on the profile.</div>
+          </div>
+          <div class="intake-field">
+            <div class="field-label">Office Contact <span class="field-required">Required</span></div>
+            <div class="field-detail">Name and email of the person at the practice who will be our point of contact for building the profile. This is not displayed publicly.
+              <span class="example">e.g. Sarah, Office Manager — <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="dfacbeadbeb79fa6b0aaadafadbebcabb6bcbaf1bcb0b2">[email&#160;protected]</a></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══ CTA ═══ -->
+  <section class="cta-section">
+    <div class="container">
+      <h2>Secure Your Founding Provider Position</h2>
+      <p>Submit your information and our team will begin building your verified profile. You review and approve everything before it goes live.</p>
+      <p style="font-size:14px;color:rgba(255,255,255,.85);margin-top:-10px;font-weight:400;">Most providers complete onboarding in under 15 minutes using existing website and credential materials.</p>
+      <div class="cta-buttons">
+        <a href="/cdn-cgi/l/email-protection#97fff2fbfbf8d7f5f2f6e2e3eefdf6e5b9f4f8faa8e4e2f5fdf2f4e3aad1f8e2f9f3fef9f0b2a5a7c7e5f8e1fef3f2e5b2a5a7d6e7e7fbfef4f6e3fef8f9" class="btn-white">Email Your Information</a>
+        <a href="index.html" class="btn-outline-white">Back to BeautyJar</a>
+      </div>
+      <p class="cta-note">Founding Provider positions are filled on a rolling basis by market and specialty.</p>
+      <p class="cta-note" style="margin-top:10px;">Our team will review your submission and follow up within 1–2 business days.</p>
+    </div>
+  </section>
+
+  <!-- ═══ FOOTER ═══
